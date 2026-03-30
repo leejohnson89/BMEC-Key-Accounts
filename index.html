@@ -2,61 +2,52 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
 <title>Key Accounts — Baldwin EMC</title>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{
   --navy:#003A5D;--teal:#017381;--lteal:#53B6B2;
-  --bg:#EFF3F5;--white:#fff;--border:#D4E1E7;--border2:#C0D3DC;
+  --bg:#EFF3F5;--white:#fff;--border:#D4E1E7;
   --txt:#1A3445;--txt2:#2B4A5C;--mut:#6B8A96;--dim:#9BB0B8;
-  --red:#C0392B;--rdim:rgba(192,57,43,0.07);--rdborder:rgba(192,57,43,0.22);
-  --green:#0E7C5B;
+  --red:#C0392B;--rdim:rgba(192,57,43,0.07);--rdborder:rgba(192,57,43,0.25);
+  --yellow:#D4A017;--ydim:rgba(212,160,23,0.08);--yborder:rgba(212,160,23,0.3);
+  --green:#0E7C5B;--gdim:rgba(14,124,91,0.08);--gborder:rgba(14,124,91,0.3);
 }
-html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'Raleway',sans-serif;font-size:13px}
+body,#root{background:var(--bg);color:var(--txt);font-family:'Raleway',sans-serif;font-size:13px}
 .shell{display:flex;flex-direction:column;height:100vh;overflow:hidden}
-/* TOPBAR */
-.topbar{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 12px;height:46px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.18)}
-.logo{display:flex;align-items:center;gap:8px}
+.topbar{background:var(--navy);padding:0 12px;height:44px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 .logo-title{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#fff}
-.logo-org{font-size:8px;color:rgba(255,255,255,.5);letter-spacing:.09em;text-transform:uppercase}
-.topnav{display:flex;gap:1px}
-.nb{background:transparent;border:none;color:rgba(255,255,255,.55);padding:5px 8px;border-radius:3px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:all .14s}
-.nb:hover,.nb:active{color:#fff;background:rgba(255,255,255,.12)}
-.nb.on{color:#fff;background:var(--teal)}
-/* STATS */
+.logo-org{font-size:8px;color:rgba(255,255,255,.45);letter-spacing:.09em;text-transform:uppercase}
+.logo{display:flex;align-items:center;gap:8px}
+.nav-wrap{background:var(--navy);border-bottom:1px solid rgba(255,255,255,.1);flex-shrink:0;padding:0 10px;display:flex;gap:2px;overflow-x:auto}
+.nav-wrap::-webkit-scrollbar{display:none}
+.nb{background:transparent;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,.5);padding:7px 9px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap;transition:all .14s}
+.nb:hover{color:#fff}
+.nb.on{color:#fff;border-bottom-color:var(--lteal)}
 .statsbar{background:var(--white);border-bottom:1px solid var(--border);display:flex;flex-shrink:0}
-.stat{flex:1;padding:8px 6px;border-right:1px solid var(--border);cursor:pointer;text-align:center}
+.stat{flex:1;padding:7px 5px;border-right:1px solid var(--border);cursor:pointer;text-align:center;transition:background .13s}
 .stat:last-child{border-right:none}
-.sv{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:18px;color:var(--navy);line-height:1}
-.sv.red{color:var(--red)}
-.sv.teal{color:var(--teal)}
-.sl{font-size:7px;color:var(--mut);letter-spacing:.07em;text-transform:uppercase;margin-top:2px;font-family:'Josefin Sans',sans-serif;font-weight:600}
-.stripe{height:3px;background:linear-gradient(90deg,var(--navy),var(--teal) 55%,var(--lteal));flex-shrink:0}
-/* MAIN */
-.main{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:12px}
-/* ONBOARD */
-.onboard{background:var(--white);border:2px solid var(--lteal);border-radius:8px;padding:18px;margin-bottom:14px;text-align:center}
-.onboard-title{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:14px;color:var(--navy);margin-bottom:6px}
-.onboard-body{font-size:11px;color:var(--mut);margin-bottom:14px;line-height:1.6}
-.onboard-btn{background:var(--navy);border:none;color:#fff;padding:9px 22px;border-radius:5px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-/* FILTERS */
-.filters{display:flex;gap:5px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
-.fb{background:var(--white);border:1.5px solid var(--border);color:var(--mut);padding:4px 10px;border-radius:20px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:all .13s;display:inline-flex;align-items:center;gap:4px}
-.dot{width:5px;height:5px;border-radius:50%;display:inline-block;flex-shrink:0}
-.srch{background:var(--white);border:1.5px solid var(--border);color:var(--txt);padding:4px 10px;border-radius:20px;font-family:'Raleway',sans-serif;font-size:11px;outline:none;width:120px;margin-left:auto}
-.srch:focus{border-color:var(--teal)}
-.srch::placeholder{color:var(--dim)}
-/* ALERT */
-.abanner{background:#FEF3F2;border:1.5px solid var(--rdborder);border-radius:5px;padding:8px 12px;margin-bottom:12px;font-size:11px;color:var(--red)}
-/* GRID */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
-/* CARD */
+.stat:hover{background:#f5f9fb}
+.sv{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:17px;color:var(--navy);line-height:1}
+.sv.red{color:var(--red)}.sv.teal{color:var(--teal)}.sv.yellow{color:var(--yellow)}.sv.green{color:var(--green)}
+.sl{font-size:7px;color:var(--mut);letter-spacing:.06em;text-transform:uppercase;margin-top:2px;font-family:'Josefin Sans',sans-serif;font-weight:600}
+#nav-stripe{height:3px;flex-shrink:0}
+.main{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:11px;position:relative}
+.main::-webkit-scrollbar{width:4px}
+.main::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.view{display:none}.view.active{display:block}
+.vh{margin-bottom:13px;padding-bottom:9px;border-bottom:2px solid var(--border);display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
+.vt{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:13px;color:var(--navy);letter-spacing:.05em;text-transform:uppercase}
+.vs{font-size:10px;color:var(--mut);margin-top:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:7px}
 .card{background:var(--white);border:1.5px solid var(--border);border-radius:7px;overflow:hidden;cursor:pointer;transition:all .17s;box-shadow:0 1px 3px rgba(0,58,93,.05)}
-.ch{padding:11px 12px;display:flex;align-items:flex-start;gap:9px}
+.card:hover{border-color:#B0C8D4;box-shadow:0 3px 10px rgba(0,58,93,.09);transform:translateY(-1px)}
+.ch{padding:10px 11px;display:flex;align-items:flex-start;gap:8px}
 .cm{flex:1;min-width:0}
-.tbadge{display:inline-flex;align-items:center;border-radius:3px;padding:2px 6px;font-size:8px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px;border:1px solid transparent;font-family:'Josefin Sans',sans-serif}
+.tbadge{display:inline-flex;align-items:center;border-radius:3px;padding:2px 5px;font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;border:1px solid transparent;font-family:'Josefin Sans',sans-serif;margin-right:3px}
 .cname{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:12px;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:1px}
 .ctit{font-size:10px;color:var(--teal);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ccity{font-size:10px;color:var(--mut)}
@@ -65,596 +56,2704 @@ html,body{height:100%;background:var(--bg);color:var(--txt);font-family:'Raleway
 .ul.ov{color:var(--red)}
 .pbar{height:2px;background:var(--bg)}
 .pf{height:100%}
-.cbody{border-top:1px solid var(--border);padding:10px 12px;background:#FAFCFD}
-.clinks{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:9px}
-.clink{color:var(--teal);font-size:10px;text-decoration:none;font-weight:500}
-.lsl{font-size:8px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;font-family:'Josefin Sans',sans-serif;font-weight:700}
-.llist{margin-bottom:9px}
-.lrow{display:flex;gap:7px;padding:3px 0;border-bottom:1px solid var(--border);align-items:flex-start}
-.lrow:last-child{border-bottom:none}
-.ld{color:var(--dim);font-size:9px;flex-shrink:0;width:68px}
-.lbadge{background:var(--bg);border:1px solid var(--border);padding:1px 4px;border-radius:2px;font-size:8px;color:var(--mut);flex-shrink:0;font-family:'Josefin Sans',sans-serif;font-weight:700}
-.ln2{color:var(--txt2);font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
-.logbtn{border:none;color:#fff;padding:7px;border-radius:4px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:700;width:100%;letter-spacing:.07em;text-transform:uppercase}
-/* VIEW HEADER */
-.vh{margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--border)}
-.vt{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:14px;color:var(--navy);letter-spacing:.05em;text-transform:uppercase}
-.vs{font-size:10px;color:var(--mut);margin-top:2px}
-/* QUEUE */
-.qsec{margin-bottom:20px}
-.qsh{display:flex;align-items:center;gap:7px;margin-bottom:7px;padding-bottom:5px;border-bottom:2px solid var(--border)}
+.moverlay{position:fixed;inset:0;background:rgba(0,20,40,.7);z-index:200;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(3px)}
+.msheet{background:var(--bg);border-radius:16px 16px 0 0;width:100%;max-width:640px;max-height:92vh;display:flex;flex-direction:column;animation:slideUp .22s ease}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.mhandle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:10px auto 0}
+.mheader{padding:12px 16px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-shrink:0;flex-wrap:wrap}
+.mname{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:15px;color:var(--navy);min-width:0}
+.mbadge{font-size:9px;font-weight:700;font-family:'Josefin Sans',sans-serif;padding:3px 8px;border-radius:12px;border:1.5px solid;white-space:nowrap}
+.mclose{background:var(--bg);border:1.5px solid var(--border);color:var(--mut);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mbody{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:12px 16px 20px}
+.mbody::-webkit-scrollbar{width:3px}
+.section{margin-bottom:16px}
+.sec-title{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.sec-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.clink{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:20px;font-size:10px;font-weight:600;text-decoration:none;border:1.5px solid var(--border);color:var(--teal);background:var(--white);transition:all .13s}
+.energy-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.energy-tile{background:var(--white);border:1.5px solid var(--border);border-radius:6px;padding:9px 11px}
+.energy-label{font-size:8px;color:var(--mut);letter-spacing:.08em;text-transform:uppercase;font-family:'Josefin Sans',sans-serif;font-weight:700;margin-bottom:3px}
+.energy-val{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:16px;color:var(--navy)}
+.energy-val.empty{color:var(--dim);font-size:13px}
+.energy-unit{font-size:9px;color:var(--mut);margin-left:2px}
+.programs-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.prog-tile{display:flex;align-items:center;gap:7px;padding:7px 9px;border-radius:5px;border:1.5px solid var(--border);background:var(--white);cursor:pointer;transition:all .13s}
+.prog-tile.active{background:rgba(14,124,91,0.07);border-color:var(--gborder)}
+.prog-icon{font-size:16px;flex-shrink:0}
+.prog-name{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:10px;color:var(--navy);flex:1}
+.prog-status{font-size:8px;font-weight:700;font-family:'Josefin Sans',sans-serif;letter-spacing:.05em}
+.prog-status.on{color:var(--green)}.prog-status.off{color:var(--dim)}
+.int-log-form{background:var(--white);border:1.5px solid var(--border);border-radius:7px;padding:12px}
+.fl{display:block;font-size:8px;color:var(--mut);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;font-family:'Josefin Sans',sans-serif;font-weight:700}
+.fi{background:var(--bg);border:1.5px solid var(--border);color:var(--txt);padding:7px 9px;border-radius:4px;font-family:'Raleway',sans-serif;font-size:12px;width:100%;outline:none;transition:border-color .13s;margin-bottom:9px}
+.fi:focus{border-color:var(--teal)}
+select.fi{cursor:pointer}
+textarea.fi{resize:vertical;min-height:65px;margin-bottom:9px}
+.int-submit{width:100%;background:var(--teal);border:none;color:#fff;padding:10px;border-radius:5px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:all .14s;display:flex;align-items:center;justify-content:center;gap:8px}
+.int-submit:hover{opacity:.88}
+.int-submit:disabled{background:var(--dim);cursor:not-allowed}
+.hist-item{display:flex;gap:9px;padding:8px 10px;background:var(--white);border:1.5px solid var(--border);border-radius:5px;margin-bottom:4px}
+.hist-meta{flex-shrink:0;min-width:65px}
+.hist-date{font-size:9px;color:var(--mut);font-family:'Josefin Sans',sans-serif;font-weight:600}
+.hist-badge{background:var(--bg);border:1px solid var(--border);padding:1px 5px;border-radius:3px;font-size:8px;color:var(--teal);display:inline-block;margin-top:3px;font-family:'Josefin Sans',sans-serif;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.hist-badge.m{background:rgba(1,115,129,0.1);border-color:var(--teal)}
+.hist-acct{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:11px;color:var(--navy);margin-bottom:2px}
+.hist-notes{font-size:11px;color:var(--txt2)}
+.tl-section{margin-bottom:18px}
+.tl-header{display:flex;align-items:center;gap:8px;padding:7px 11px;border-radius:5px;margin-bottom:7px;font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.tl-header.green{background:var(--gdim);color:var(--green);border:1.5px solid var(--gborder)}
+.tl-header.yellow{background:var(--ydim);color:var(--yellow);border:1.5px solid var(--yborder)}
+.tl-header.red{background:var(--rdim);color:var(--red);border:1.5px solid var(--rdborder)}
+.tl-cnt{font-size:17px;font-weight:700;margin-left:auto}
+.int-row{display:flex;align-items:center;gap:9px;padding:8px 10px;background:var(--white);border:1.5px solid var(--border);border-radius:5px;margin-bottom:3px;transition:all .14s;cursor:pointer}
+.int-row:hover{border-color:#B0C8D4}
+.int-row.green{border-left:3px solid var(--green)}
+.int-row.yellow{border-left:3px solid var(--yellow)}
+.int-row.red{border-left:3px solid var(--red)}
+.int-name{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:12px;color:var(--navy);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.int-sub{font-size:10px;color:var(--mut)}
+.int-date{text-align:right;flex-shrink:0;min-width:75px}
+.int-days{font-size:11px;font-weight:700;font-family:'Josefin Sans',sans-serif}
+.int-lbl{font-size:9px;color:var(--dim);margin-top:1px}
+.qsec{margin-bottom:18px}
+.qsh{display:flex;align-items:center;gap:7px;margin-bottom:6px;padding-bottom:5px;border-bottom:2px solid var(--border)}
 .qst{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
-.qcad{font-size:9px;color:var(--mut);font-family:'Josefin Sans',sans-serif;font-weight:600}
-.qrow{display:flex;align-items:center;gap:9px;padding:9px 11px;background:var(--white);border:1.5px solid var(--border);border-radius:5px;margin-bottom:3px;box-shadow:0 1px 2px rgba(0,58,93,.04)}
+.qcad{font-size:9px;color:var(--mut);font-family:'Josefin Sans',sans-serif}
+.qrow{display:flex;align-items:center;gap:9px;padding:8px 10px;background:var(--white);border:1.5px solid var(--border);border-radius:5px;margin-bottom:3px;cursor:pointer;transition:all .13s}
+.qrow:hover{border-color:#B0C8D4}
 .qrow.ov{border-color:var(--rdborder);background:#FFFBFB}
-.qrank{width:20px;height:20px;border-radius:50%;background:var(--bg);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--mut);flex-shrink:0;font-family:'Josefin Sans',sans-serif;font-weight:700}
+.qrank{width:19px;height:19px;border-radius:50%;background:var(--bg);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--mut);flex-shrink:0;font-family:'Josefin Sans',sans-serif;font-weight:700}
 .qname{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:12px;color:var(--navy);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .qtit{font-size:10px;color:var(--mut)}
-.qstat{text-align:right;flex-shrink:0;min-width:80px}
+.qstat{text-align:right;flex-shrink:0;min-width:78px}
 .qurg{font-size:10px;font-weight:700;font-family:'Josefin Sans',sans-serif}
 .qlast{font-size:9px;color:var(--dim);margin-top:1px}
-.qlb{background:transparent;border:1.5px solid;padding:3px 8px;border-radius:3px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0}
-/* SETUP */
-.srow{display:flex;align-items:center;gap:9px;padding:7px 10px;background:var(--white);border:1.5px solid var(--border);border-radius:4px;margin-bottom:3px}
+.srow{display:flex;align-items:center;gap:8px;padding:6px 9px;background:var(--white);border:1.5px solid var(--border);border-radius:4px;margin-bottom:3px}
 .sname{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:11px;color:var(--navy);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .scity{font-size:9px;color:var(--mut)}
-.tsel{background:var(--white);border:1.5px solid var(--border);padding:4px 6px;border-radius:3px;font-family:'Raleway',sans-serif;font-size:11px;cursor:pointer;min-width:160px;outline:none}
-/* HISTORY */
-.hrow{display:flex;gap:11px;padding:9px 12px;background:var(--white);border:1.5px solid var(--border);border-radius:5px;margin-bottom:4px}
-.hm{flex-shrink:0;min-width:68px}
-.hd{font-size:9px;color:var(--mut);font-family:'Josefin Sans',sans-serif;font-weight:700}
-.hbadge{background:var(--bg);border:1px solid var(--border);padding:2px 5px;border-radius:3px;font-size:8px;color:var(--teal);display:inline-block;margin-top:3px;font-family:'Josefin Sans',sans-serif;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
-.ha{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:11px;color:var(--navy);margin-bottom:2px}
-.hn{font-size:11px;color:var(--txt2)}
-/* MODAL */
-.overlay{position:fixed;inset:0;background:rgba(0,25,45,.65);display:flex;align-items:center;justify-content:center;z-index:999}
-.modal{background:var(--white);border:1.5px solid var(--border);border-radius:9px;padding:20px;width:320px;max-width:92vw;box-shadow:0 20px 55px rgba(0,58,93,.2)}
-.mt{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:15px;color:var(--navy);margin-bottom:2px}
-.ms{font-size:11px;color:var(--mut);margin-bottom:15px}
-.fl{display:block;font-size:8px;color:var(--mut);letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;font-family:'Josefin Sans',sans-serif;font-weight:700}
-.fi{background:var(--bg);border:1.5px solid var(--border);color:var(--txt);padding:7px 9px;border-radius:4px;font-family:'Raleway',sans-serif;font-size:12px;width:100%;outline:none;margin-bottom:10px}
-.fi:focus{border-color:var(--teal)}
-textarea.fi{resize:vertical;min-height:70px}
-.macts{display:flex;gap:7px;margin-top:3px}
-.mcancel{flex:1;background:var(--bg);border:1.5px solid var(--border);color:var(--mut);padding:8px;border-radius:4px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-.msave{flex:2;background:var(--navy);border:none;color:#fff;padding:8px;border-radius:4px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
-/* EMPTY */
-.empty{text-align:center;padding:40px 16px}
+.tsel{background:var(--white);border:1.5px solid var(--border);padding:3px 6px;border-radius:3px;font-family:'Raleway',sans-serif;font-size:11px;cursor:pointer;min-width:155px;outline:none}
+.srch{background:var(--white);border:1.5px solid var(--border);color:var(--txt);padding:5px 10px;border-radius:20px;font-family:'Raleway',sans-serif;font-size:11px;outline:none;width:100%;margin-bottom:10px}
+.srch:focus{border-color:var(--teal)}
+.srch::placeholder{color:var(--dim)}
+.empty{text-align:center;padding:36px 14px}
 .et{font-family:'Josefin Sans',sans-serif;font-size:14px;color:var(--mut);margin-bottom:5px;font-weight:600}
-.es{font-size:10px;color:var(--dim)}
-/* view display */
-.view{display:none}
-.view.active{display:block}
+.ph-box{background:var(--white);border:2px dashed var(--border);border-radius:7px;padding:20px;text-align:center;margin-bottom:10px}
+.sync-ok{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--green);font-weight:600;margin-top:8px;font-family:'Josefin Sans',sans-serif}
+.sync-err{font-size:11px;color:var(--red);margin-top:6px}
+
+@keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+.refresh-btn{background:none;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.6);border-radius:4px;padding:3px 8px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:.08em;text-transform:uppercase;transition:all .13s}
+.refresh-btn:hover{background:rgba(255,255,255,.1);color:#fff}
 </style>
 </head>
 <body>
 <div class="shell">
   <div class="topbar">
     <div class="logo">
-      <svg width="26" height="22" viewBox="0 0 40 34" fill="none">
-        <g transform="skewX(-12)">
-          <rect x="0" y="14" width="9" height="20" rx="1" fill="#53B6B2"/>
-          <rect x="13" y="7" width="9" height="27" rx="1" fill="#80C8D4"/>
-          <rect x="26" y="0" width="9" height="34" rx="1" fill="white"/>
-        </g>
+      <svg width="24" height="20" viewBox="0 0 40 34" fill="none"><g transform="skewX(-12)"><rect x="0" y="14" width="9" height="20" rx="1" fill="#53B6B2"/><rect x="13" y="7" width="9" height="27" rx="1" fill="#80C8D4"/><rect x="26" y="0" width="9" height="34" rx="1" fill="white"/></g></svg>
+      <div><div class="logo-title">Key Accounts</div><div class="logo-org">Baldwin EMC · External Affairs</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <div id="sync-banner" style="display:none;align-items:center;gap:5px;font-size:9px;color:rgba(255,255,255,.7);font-family:'Josefin Sans',sans-serif;letter-spacing:.06em">
+        <span style="display:inline-block;animation:spin 1s linear infinite;font-size:11px">&#x27F3;</span> SYNCING&hellip;
+      </div>
+      <div id="sync-done" style="font-size:9px;color:rgba(255,255,255,.4);font-style:italic">Live &middot; Monday.com</div>
+      <button class="refresh-btn" onclick="manualRefresh()">&#x27F3; Refresh</button>
+    </div>
+  </div>
+  <div class="nav-wrap">
+    <button class="nb" data-view="revenue"      onclick="showView('revenue')">&#x1F4B0; Revenue</button>
+    <button class="nb" data-view="political"    onclick="showView('political')">&#x1F3DB; Political</button>
+    <button class="nb" data-view="load"         onclick="showView('load')">&#x26A1; Load</button>
+    <button class="nb" data-view="interactions" onclick="showView('interactions')">&#x1F6A6; Interactions</button>
+    <button class="nb" data-view="queue"        onclick="showView('queue')">Queue</button>
+    <button class="nb" data-view="setup"        onclick="showView('setup')">Setup</button>
+    <button class="nb" data-view="history"      onclick="showView('history')">History</button>
+  </div>
+  <div class="statsbar">
+    <div class="stat" onclick="showView('revenue')"><div class="sv teal" id="stat-rev">&mdash;</div><div class="sl">Revenue</div></div>
+    <div class="stat" onclick="showView('load')"><div class="sv" id="stat-load">&mdash;</div><div class="sl">Load</div></div>
+    <div class="stat" onclick="showView('interactions')" style="background:rgba(14,124,91,0.04)"><div class="sv green" id="stat-green">&mdash;</div><div class="sl">&#x1F7E2; Active</div></div>
+    <div class="stat" onclick="showView('interactions')" style="background:rgba(212,160,23,0.04)"><div class="sv yellow" id="stat-yellow">&mdash;</div><div class="sl">&#x1F7E1; Cooling</div></div>
+    <div class="stat" onclick="showView('interactions')" style="background:rgba(192,57,43,0.04)"><div class="sv red" id="stat-red">&mdash;</div><div class="sl">&#x1F534; Cold</div></div>
+  </div>
+  <div id="nav-stripe" style="height:3px;flex-shrink:0"></div>
+  <div class="main">
+    <div id="view-revenue"      class="view"></div>
+    <div id="view-political"    class="view"></div>
+    <div id="view-load"         class="view"></div>
+    <div id="view-interactions" class="view"></div>
+    <div id="view-queue"        class="view"></div>
+    <div id="view-setup"        class="view"></div>
+    <div id="view-history"      class="view"></div>
+  </div>
+</div>
+<div id="modal" class="moverlay">
+  <div class="msheet">
+    <div class="mhandle"></div>
+    <div class="mheader">
+      <div style="flex:1;min-width:0">
+        <div class="mname" id="modal-header-name"></div>
+        <div style="font-size:10px;color:var(--mut);margin-top:2px" id="modal-header-city"></div>
+      </div>
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap" id="modal-header-badges"></div>
+      <button class="mclose" onclick="closeModal()">&#x00D7;</button>
+    </div>
+    <div class="mbody" id="modal-body"></div>
+  </div>
+</div>
+<script>
+
+const TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjYzNDM4MTczMiwiYWFpIjoxMSwidWlkIjo5OTgwNTIyNywiaWFkIjoiMjAyNi0wMy0xN1QxOTozOToxMC4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MzM3NzU2MzcsInJnbiI6InVzZTEifQ.-9Egd9G0dYgB9rbiP5g-0HkAEhwolWDa5wiekqhoK5c";
+const BOARD_ID = "18399873775";
+const TIERS = [
+{
+"name": "Political / Government",
+"rank": 1,
+"color": "#003A5D",
+"dim": "rgba(0,58,93,0.09)",
+"cadence": 180,
+"short": "POL"
+},
+{
+"name": "Large Revenue",
+"rank": 2,
+"color": "#017381",
+"dim": "rgba(1,115,129,0.09)",
+"cadence": 180,
+"short": "REV"
+},
+{
+"name": "Large Load",
+"rank": 3,
+"color": "#53B6B2",
+"dim": "rgba(83,182,178,0.12)",
+"cadence": 270,
+"short": "LOD"
+},
+{
+"name": "Strategic Partner",
+"rank": 4,
+"color": "#2E7D9A",
+"dim": "rgba(46,125,154,0.09)",
+"cadence": 365,
+"short": "STR"
+},
+{
+"name": "Community Anchor",
+"rank": 5,
+"color": "#6B9EAC",
+"dim": "rgba(107,158,172,0.1)",
+"cadence": 365,
+"short": "COM"
+}
+];
+const MONDAY_TIERS = {"11261102239": "Political / Government", "11459736243": "Political / Government", "11459710593": "Large Revenue", "11459717902": "Large Revenue", "11459754437": "Large Revenue", "11459715320": "Large Revenue", "11459718173": "Large Revenue", "11459728849": "Large Revenue", "11459771970": "Political / Government", "11459732084": "Large Revenue", "11459717229": "Large Revenue", "11459727380": "Large Revenue", "11459748889": "Large Revenue", "11459727234": "Large Revenue", "11459747621": "Political / Government", "11459748133": "Large Revenue", "11459754737": "Large Revenue", "11459728413": "Large Revenue", "11459727483": "Large Revenue", "11459735417": "Large Revenue", "11459731848": "Large Revenue", "11459746136": "Large Revenue", "11459750272": "Political / Government", "11459714700": "Large Revenue", "11459729933": "Large Revenue", "11459714775": "Large Revenue", "11459711917": "Political / Government", "11459726400": "Large Revenue", "11459765650": "Large Revenue", "11459730702": "Large Revenue", "11459730430": "Large Revenue", "11459751104": "Large Revenue", "11459729824": "Large Revenue", "11459726519": "Large Revenue", "11459750492": "Large Revenue", "11459730871": "Large Revenue", "11459745585": "Large Revenue", "11459750160": "Large Revenue", "11459730706": "Large Revenue", "11459766293": "Large Revenue", "11459749244": "Large Revenue", "11459770403": "Large Revenue", "11459749855": "Large Revenue", "11459750626": "Large Revenue", "11459731071": "Large Revenue", "11459708879": "Large Revenue", "11459726722": "Large Revenue", "11459726312": "Large Revenue", "11459750911": "Political / Government", "11459765643": "Large Revenue", "11459747055": "Large Revenue", "11459785180": "Large Revenue", "11459746371": "Large Revenue", "11459768298": "Political / Government", "11459767300": "Large Revenue", "11459751118": "Large Revenue", "11459749256": "Large Revenue", "11459747035": "Large Revenue", "11459784661": "Large Revenue", "11459745315": "Large Revenue", "11459783625": "Large Revenue", "11459745251": "Large Revenue", "11459734505": "Political / Government", "11459770194": "Large Revenue", "11459771099": "Political / Government", "11459751524": "Large Revenue", "11459752473": "Large Revenue", "11459745750": "Large Revenue", "11459784445": "Large Revenue", "11520563600": "Large Revenue", "11520881002": "Political / Government", "11520971375": "Political / Government", "11520977249": "Large Load", "11521105827": "Large Load", "11521115806": "Political / Government", "11521102309": "Large Load", "11521123362": "Political / Government", "11521133306": "Large Load", "11521132973": "Large Load", "11521119991": "Large Load", "11521120007": "Political / Government", "11521132889": "Political / Government", "11530215257": "Political / Government"};
+const MONDAY_INTS = [
+{"id":"mon-11261102239","accountId":"11261102239","accountName":"The Wharf","date":"2026-03-13","type":"Event","notes":"Connected at Coastal Chamber event","fromMonday":true},
+{"id":"mon-11459710593","accountId":"11459710593","accountName":"Wal-Mart Stores East LP","date":"2026-03-24","type":"Email","notes":"Connected with the new points of contact for Walmart on the energy team.","fromMonday":true},
+{"id":"mon-11459771970","accountId":"11459771970","accountName":"City of Orange Beach","date":"2026-03-24","type":"Meeting","notes":"Meeting scheduled with Ford Handley in April 2026.","fromMonday":true},
+{"id":"mon-11459747621","accountId":"11459747621","accountName":"City of Gulf Shores","date":"2026-03-26","type":"Other","notes":"Working to submit GATC project.","fromMonday":true},
+{"id":"mon-11459730706","accountId":"11459730706","accountName":"Columbia Southern University","date":"2026-03-17","type":"Meeting","notes":"Lunch with Ken Styron — meeting to follow on AI.","fromMonday":true},
+{"id":"mon-11520971375","accountId":"11520971375","accountName":"68 Ventures","date":"2026-03-24","type":"Meeting","notes":"Meeting with Kim Garrett of 68V, introduced to NBU.","fromMonday":true},
+{"id":"mon-11520977249","accountId":"11520977249","accountName":"Amazon","date":"2026-01-15","type":"Email","notes":"Notified Amazon contact of job change.","fromMonday":true},
+{"id":"mon-11521105827","accountId":"11521105827","accountName":"Butting","date":"2026-03-05","type":"Meeting","notes":"Toured existing facility.","fromMonday":true},
+{"id":"mon-11459751104","accountId":"11459751104","accountName":"Novelis Corporation","date":"2026-03-27","type":"Interaction","notes":"Logged in Monday.com","fromMonday":true},
+{"id":"mon-11459768298","accountId":"11459768298","accountName":"Solid Waste Disposal Authority","date":"2026-01-20","type":"Interaction","notes":"Logged in Monday.com","fromMonday":true},
+{"id":"mon-11520563600","accountId":"11520563600","accountName":"PalletOne","date":"2026-01-15","type":"Interaction","notes":"Logged in Monday.com","fromMonday":true},
+{"id":"mon-11520881002","accountId":"11520881002","accountName":"Gulf Shores International Airport","date":"2026-03-17","type":"Interaction","notes":"Logged in Monday.com","fromMonday":true},
+{"id":"mon-11521115806","accountId":"11521115806","accountName":"Alabama Beaches","date":"2026-03-17","type":"Interaction","notes":"Logged in Monday.com","fromMonday":true},
+{"id":"mon-11521120007","accountId":"11521120007","accountName":"Baldwin Health","date":"2026-03-07","type":"Interaction","notes":"Logged in Monday.com","fromMonday":true},
+{"id":"mon-11521132889","accountId":"11521132889","accountName":"Coastal Alabama Community College","date":"2026-03-20","type":"Event","notes":"Josh invited to April 7th, 2026 South Baldwin Chamber Leadership Series Luncheon.","fromMonday":true},
+{"id":"mon-11530215257d","accountId":"11530215257","accountName":"Baldwin County Commission","date":"2026-03-25","type":"Meeting","notes":"Meeting with Roger Rendleman.","fromMonday":true},
+{"id":"mon-11530215257c","accountId":"11530215257","accountName":"Baldwin County Commission","date":"2026-03-19","type":"Event","notes":"Roger and Billie Jo to attend South Baldwin Chamber event with EMC.","fromMonday":true},
+{"id":"mon-11530215257b","accountId":"11530215257","accountName":"Baldwin County Commission","date":"2026-03-17","type":"Meeting","notes":"Gift cards dropped off to Billie Jo Underwood and Matt McKenzie for an event.","fromMonday":true},
+{"id":"mon-11530215257a","accountId":"11530215257","accountName":"Baldwin County Commission","date":"2026-03-13","type":"Event","notes":"Billie Jo Underwood attended Coastal Chamber Gala with EMC.","fromMonday":true},
+{"id":"mon-11530215257z","accountId":"11530215257","accountName":"Baldwin County Commission","date":"2026-03-12","type":"Meeting","notes":"Lee met with Billie Jo Underwood 1 on 1 to discuss zoning/advisory.","fromMonday":true},
+{"id":"mon-11459734505","accountId":"11459734505","accountName":"City of Fairhope","date":"2026-03-17","type":"Interaction","notes":"Logged in Monday.com","fromMonday":true}
+];
+const ACCOUNTS = [
+{
+"id": "11261102239",
+"name": "The Wharf",
+"district": "South",
+"address": "4830 Main Street",
+"city": "Orange Beach",
+"zip": "36561",
+"notes": "Primary: Jim Bibby (251-224-1000, jimb@alwharf.com). Commercial entertainment complex at The Wharf marina in Orange Beach.",
+"contacts": [
+{
+"name": "Jim Bibby",
+"title": "General Manager",
+"phone": "251-224-1000",
+"email": "jimb@alwharf.com"
+}
+]
+},
+{
+"id": "11459736243",
+"name": "Baldwin County Board of Education",
+"district": "North",
+"address": "2600-A North Hand Avenue",
+"city": "Bay Minette",
+"zip": "36507",
+"notes": "Multiple school facilities across Baldwin County.",
+"contacts": [
+{
+"name": "Eddie Tyler",
+"title": "Superintendent",
+"phone": "251-937-0308",
+"email": "etyler@bcbe.org"
+}
+]
+},
+{
+"id": "11459710593",
+"name": "Wal-Mart Stores East LP",
+"district": "South",
+"address": "Multiple Locations",
+"city": "",
+"zip": "",
+"notes": "Foley Supercenter #904, Gulf Shores Supercenter #2748, Orange Beach Neighborhood Market #5653.",
+"contacts": [
+{
+"name": "Brian Thomas",
+"title": "Market Manager",
+"phone": "251-943-3400",
+"email": "brian.thomas@walmart.com"
+}
+]
+},
+{
+"id": "11459717902",
+"name": "Publix Alabama LLC",
+"district": "South",
+"address": "Multiple Locations",
+"city": "",
+"zip": "",
+"notes": "4+ locations in Baldwin County. Utility contact: Bryan Morrison - Utilities Manager.",
+"contacts": [
+{
+"name": "James Mowery",
+"title": "District Manager",
+"phone": "800-242-1227",
+"email": "james.mowery@publix.com"
+},
+{
+"name": "Bryan Morrison",
+"title": "Utilities Manager",
+"phone": "678-313-9364",
+"email": ""
+}
+]
+},
+{
+"id": "11459754437",
+"name": "Aldi, Inc.",
+"district": "Central",
+"address": "30800 County Road 49",
+"city": "Loxley",
+"zip": "36551",
+"notes": "Loxley distribution center.",
+"contacts": [
+{
+"name": "Heather Moore",
+"title": "DC Contact",
+"phone": "",
+"email": "heather.moore@aldi.us"
+}
+]
+},
+{
+"id": "11459715320",
+"name": "Phoenix West II Owners Association",
+"district": "South",
+"address": "500 Grand Blvd, Suite K-220",
+"city": "Miramar Beach",
+"zip": "32550",
+"notes": "Managed by Brett-Robinson. Board president is a private owner-volunteer.",
+"contacts": [
+{
+"name": "Bill Brett",
+"title": "Property Manager",
+"phone": "251-948-1929",
+"email": "billb@brettrobinson.com"
+}
+]
+},
+{
+"id": "11459718173",
+"name": "Turquoise Place Condominium Association",
+"district": "South",
+"address": "26302 Perdido Beach Blvd",
+"city": "Orange Beach",
+"zip": "36561",
+"notes": "Spectrum Resorts managed property.",
+"contacts": [
+{
+"name": "Tony Marzullo",
+"title": "GM, Spectrum Resorts",
+"phone": "251-224-2774",
+"email": "tonymarzullo@beachclubal.com"
+}
+]
+},
+{
+"id": "11459728849",
+"name": "Phoenix West Owners Association Inc.",
+"district": "South",
+"address": "PO Box 1339",
+"city": "Gulf Shores",
+"zip": "36547",
+"notes": "Managed by Brett-Robinson.",
+"contacts": [
+{
+"name": "Bill Brett",
+"title": "Property Manager",
+"phone": "251-948-1929",
+"email": "billb@brettrobinson.com"
+}
+]
+},
+{
+"id": "11459771970",
+"name": "City of Orange Beach",
+"district": "South",
+"address": "Multiple Locations",
+"city": "Orange Beach",
+"zip": "",
+"notes": "City government relationship.",
+"contacts": [
+{
+"name": "Tony Kennon",
+"title": "Mayor",
+"phone": "",
+"email": "tkennon@cityoforangebeach.com"
+},
+{
+"name": "Ford Handley",
+"title": "City Administrator",
+"phone": "",
+"email": "fhandley@cityoforangebeach.com"
+}
+]
+},
+{
+"id": "11459732084",
+"name": "Buc-ee's Alabama LLC",
+"district": "South",
+"address": "1291 Gulf Shores Pkwy",
+"city": "Gulf Shores",
+"zip": "36542",
+"notes": "One of the largest Buc-ee's in the chain.",
+"contacts": [
+{
+"name": "Matthew Sheffield",
+"title": "Director",
+"phone": "346-774-2218",
+"email": "matthew.sheffield@buc-ees.com"
+},
+{
+"name": "Chris Andersen",
+"title": "Sr. Director, Facilities",
+"phone": "346-774-2227",
+"email": "chris@buc-ees.com"
+}
+]
+},
+{
+"id": "11459717229",
+"name": "Rouse's Enterprises LLC",
+"district": "South",
+"address": "Multiple Locations",
+"city": "",
+"zip": "",
+"notes": "Multiple Baldwin County grocery locations.",
+"contacts": [
+{
+"name": "Danielle Thomas",
+"title": "General Manager",
+"phone": "",
+"email": "danielle.thomas@rouses.com"
+}
+]
+},
+{
+"id": "11459727380",
+"name": "Ace Hardware Corp",
+"district": "Central",
+"address": "29891 State Highway 59",
+"city": "Loxley",
+"zip": "36551",
+"notes": "Corporate distribution warehouse (not retail franchise).",
+"contacts": [
+{
+"name": "Daniel Trehern",
+"title": "Regional/Corporate Contact",
+"phone": "601-329-1545",
+"email": "dtreh@acehardware.com"
+},
+{
+"name": "Joe Bolda",
+"title": "Site Manager",
+"phone": "251-964-8500",
+"email": "jbolda@acehardware.com"
+}
+]
+},
+{
+"id": "11459748889",
+"name": "Gulf State Park",
+"district": "South",
+"address": "21196 East Beach Boulevard",
+"city": "Gulf Shores",
+"zip": "36542",
+"notes": "Verify ADCNR park management contact separately.",
+"contacts": [
+{
+"name": "Dan Keyser",
+"title": "Lodge Manager",
+"phone": "",
+"email": "dkeyser@lodgegsp.com"
+}
+]
+},
+{
+"id": "11459727234",
+"name": "Viridi Magnolia LLC",
+"district": "South",
+"address": "",
+"city": "",
+"zip": "",
+"notes": "Delaware-registered entity. Research Baldwin County operating facility.",
+"contacts": []
+},
+{
+"id": "11459747621",
+"name": "City of Gulf Shores",
+"district": "South",
+"address": "1905 W. Snook St",
+"city": "Gulf Shores",
+"zip": "36542",
+"notes": "Key municipal government relationship.",
+"contacts": [
+{
+"name": "Robert Craft",
+"title": "Mayor",
+"phone": "251-968-1124",
+"email": "mayor@gulfshoresal.gov"
+}
+]
+},
+{
+"id": "11459748133",
+"name": "Foley Holdings LLC",
+"district": "South",
+"address": "1501 S Owa Boulevard",
+"city": "Foley",
+"zip": "36535",
+"notes": "The Park at OWA entertainment and retail complex.",
+"contacts": [
+{
+"name": "Michael Neace",
+"title": "General Manager",
+"phone": "251-923-3571",
+"email": "mneace@visitowa.com"
+}
+]
+},
+{
+"id": "11459754737",
+"name": "Phoenix Gulf Towers Owners Association",
+"district": "South",
+"address": "23044 Perdido Beach Blvd",
+"city": "Orange Beach",
+"zip": "36561",
+"notes": "Managed by Brett-Robinson.",
+"contacts": [
+{
+"name": "Bill Brett",
+"title": "Property Manager",
+"phone": "251-948-1929",
+"email": "billb@brettrobinson.com"
+}
+]
+},
+{
+"id": "11459728413",
+"name": "Paul Stewart",
+"district": "Central",
+"address": "PO Box 440",
+"city": "Loxley",
+"zip": "36551",
+"notes": "Likely agricultural or commercial landowner. Check Baldwin County property records.",
+"contacts": []
+},
+{
+"id": "11459727483",
+"name": "Perdido Hotel Partners LLC",
+"district": "South",
+"address": "27200 Perdido Beach Blvd",
+"city": "Orange Beach",
+"zip": "36561",
+"notes": "Perdido Beach Resort.",
+"contacts": [
+{
+"name": "Dee Richardson",
+"title": "Managing Director",
+"phone": "251-981-9811",
+"email": "drichardson@perdidobeachresort.com"
+}
+]
+},
+{
+"id": "11459735417",
+"name": "PHG WB Gulf Shores LLC",
+"district": "South",
+"address": "",
+"city": "Gulf Shores",
+"zip": "",
+"notes": "Hospitality LLC. Search: Westin Gulf Shores for current GM.",
+"contacts": []
+},
+{
+"id": "11459731848",
+"name": "Tesla Inc.",
+"district": "South",
+"address": "Multiple Locations",
+"city": "",
+"zip": "",
+"notes": "Southeast region coverage for Alabama Supercharger/service.",
+"contacts": [
+{
+"name": "George Levins",
+"title": "Regional Manager, Sales & Delivery",
+"phone": "888-518-3752",
+"email": "glevins@tesla.com"
+},
+{
+"name": "Brian Gracen",
+"title": "Sr. Manager, Regional Ops",
+"phone": "404-294-8888",
+"email": "bgracen@tesla.com"
+}
+]
+},
+{
+"id": "11459746136",
+"name": "Caribe Resort Condominium Association",
+"district": "South",
+"address": "28103 Perdido Beach Blvd",
+"city": "Orange Beach",
+"zip": "36561",
+"notes": "600-unit resort complex. HOA meeting March 21, 2026.",
+"contacts": [
+{
+"name": "Stan Szapiel",
+"title": "GM & Qualifying Broker",
+"phone": "251-980-9020",
+"email": "tonymarzullo@beachclubal.com"
+}
+]
+},
+{
+"id": "11459750272",
+"name": "Orange Beach BOE",
+"district": "South",
+"address": "4544 Orange Beach Boulevard",
+"city": "Orange Beach",
+"zip": "36561",
+"notes": "",
+"contacts": [
+{
+"name": "Randy Wilkes",
+"title": "Superintendent",
+"phone": "251-424-1730",
+"email": "rwilkes@orangebeachboe.org"
+}
+]
+},
+{
+"id": "11459714700",
+"name": "Sinclair Media II Inc.",
+"district": "South",
+"address": "",
+"city": "",
+"zip": "",
+"notes": "Transmitter/tower site in NE Baldwin County.",
+"contacts": [
+{
+"name": "William Wilson",
+"title": "Local Contact",
+"phone": "251-981-9811",
+"email": "wwilson@deerfieldmediainc.com"
+}
+]
+},
+{
+"id": "11459729933",
+"name": "Cal-Maine Foods Inc.",
+"district": "Central",
+"address": "Multiple Locations",
+"city": "",
+"zip": "",
+"notes": "Industrial egg production facility.",
+"contacts": [
+{
+"name": "Christopher Weaver",
+"title": "General Manager",
+"phone": "251-946-2000",
+"email": "christopherweaver@calmainefoods.com"
+}
+]
+},
+{
+"id": "11459714775",
+"name": "Phoenix Orange Beach Owners Association",
+"district": "South",
+"address": "PO Box 1339",
+"city": "Gulf Shores",
+"zip": "36547",
+"notes": "Managed by Brett-Robinson.",
+"contacts": [
+{
+"name": "Bill Brett",
+"title": "Property Manager",
+"phone": "251-948-1929",
+"email": "billb@brettrobinson.com"
+}
+]
+},
+{
+"id": "11459711917",
+"name": "Utilities Board - City of Gulf Shores",
+"district": "South",
+"address": "1629 East 1st Street",
+"city": "Gulf Shores",
+"zip": "36547",
+"notes": "Separate utility serving Gulf Shores city core.",
+"contacts": [
+{
+"name": "Rhonda Butler",
+"title": "General Manager",
+"phone": "251-968-6323",
+"email": "rbutler@gulfshoresutilities.com"
+},
+{
+"name": "Jeff Deakins",
+"title": "Secondary Contact",
+"phone": "251-331-3983",
+"email": "jeffdeakins@bellsouth.net"
+}
+]
+},
+{
+"id": "11459726400",
+"name": "Brett Real Estate / Robinson Development Co.",
+"district": "South",
+"address": "Multiple Locations",
+"city": "Gulf Shores",
+"zip": "",
+"notes": "Manages multiple Phoenix condo associations.",
+"contacts": [
+{
+"name": "Bill Brett",
+"title": "President & CEO",
+"phone": "251-948-1929",
+"email": "billb@brettrobinson.com"
+}
+]
+},
+{
+"id": "11459765650",
+"name": "Phoenix Orange Beach II Owners Association",
+"district": "South",
+"address": "PO Box 1339",
+"city": "Gulf Shores",
+"zip": "36547",
+"notes": "Managed by Brett-Robinson.",
+"contacts": [
+{
+"name": "Bill Brett",
+"title": "Property Manager",
+"phone": "251-948-1929",
+"email": "billb@brettrobinson.com"
+}
+]
+},
+{
+"id": "11459730702",
+"name": "Caribe Resort COA Phase II",
+"district": "South",
+"address": "28103 Perdido Beach Blvd",
+"city": "Orange Beach",
+"zip": "36561",
+"notes": "Same management as Caribe Resort COA. HOA meeting March 21, 2026.",
+"contacts": [
+{
+"name": "Stan Szapiel",
+"title": "GM",
+"phone": "251-980-9020",
+"email": "tonymarzullo@beachclubal.com"
+}
+]
+},
+{
+"id": "11459730430",
+"name": "Target Corporation",
+"district": "South",
+"address": "3600 Gulf Shores Pkwy",
+"city": "Gulf Shores",
+"zip": "36542",
+"notes": "Gulf Shores store.",
+"contacts": [
+{
+"name": "Paige Pope",
+"title": "Store Director",
+"phone": "251-971-5900",
+"email": "paige.pope@target.com"
+}
+]
+},
+{
+"id": "11459751104",
+"name": "Novelis Corporation",
+"district": "North",
+"address": "815 Dr. Martin Luther King Jr. Blvd.",
+"city": "Bay Minette",
+"zip": "36507",
+"notes": "Bay Minette aluminum rolling facility. High industrial load account.",
+"contacts": [
+{
+"name": "Tori Holt",
+"title": "Plant Manager",
+"phone": "",
+"email": "tori.holt@novelis.adityabirla.com"
+}
+]
+},
+{
+"id": "11459729824",
+"name": "Bon Secour Fisheries Inc.",
+"district": "South",
+"address": "PO Box 60",
+"city": "Bon Secour",
+"zip": "36511",
+"notes": "Seafood processing operations.",
+"contacts": [
+{
+"name": "Christopher L. Nelson",
+"title": "President",
+"phone": "251-949-5052",
+"email": "sjnelson@gulftel.com"
+}
+]
+},
+{
+"id": "11459726519",
+"name": "Kaishan Compressor USA LLC",
+"district": "Central",
+"address": "15445 Industrial Park Dr",
+"city": "Loxley",
+"zip": "36551",
+"notes": "Air compressor manufacturing facility.",
+"contacts": [
+{
+"name": "Keith Schumacher",
+"title": "President",
+"phone": "251-257-0586",
+"email": "kschumacher@kaishanusa.com"
+},
+{
+"name": "Matt Eberlein",
+"title": "Plant Manager",
+"phone": "251-533-2584",
+"email": "meberlein@kaishanusa.com"
+},
+{
+"name": "Jennifer Staid",
+"title": "Office Contact",
+"phone": "251-257-0586",
+"email": "jstaid@kaishanusa.com"
+}
+]
+},
+{
+"id": "11459750492",
+"name": "Cumulus Broadcasting LLC",
+"district": "South",
+"address": "",
+"city": "",
+"zip": "",
+"notes": "Radio stations serving Mobile-Pensacola DMA. Identify local GM.",
+"contacts": []
+},
+{
+"id": "11459730871",
+"name": "Phoenix Gulf Shores Owners Association",
+"district": "South",
+"address": "PO Box 1339",
+"city": "Gulf Shores",
+"zip": "36547",
+"notes": "Managed by Brett-Robinson.",
+"contacts": [
+{
+"name": "Bill Brett",
+"title": "Property Manager",
+"phone": "251-948-1929",
+"email": "billb@brettrobinson.com"
+}
+]
+},
+{
+"id": "11459745585",
+"name": "Bella Luna Condo Owners Association",
+"district": "South",
+"address": "29531 Perdido Beach Blvd",
+"city": "Orange Beach",
+"zip": "36561",
+"notes": "Self-managed building on Old River. HOA meeting in fall.",
+"contacts": [
+{
+"name": "Teresa Badonsky",
+"title": "On-Site Manager",
+"phone": "",
+"email": "Teresa.badonsky@bellalunacondos.net"
+}
+]
+},
+{
+"id": "11459750160",
+"name": "Deerfield Media (Mobile) Inc.",
+"district": "South",
+"address": "",
+"city": "",
+"zip": "",
+"notes": "Owns WPMI & WJTC Mobile. Transmitter-based account.",
+"contacts": [
+{
+"name": "William Wilson",
+"title": "FCC Contact",
+"phone": "251-662-3002",
+"email": "wwilson@deerfieldmediainc.com"
+}
+]
+},
+{
+"id": "11459730706",
+"name": "Columbia Southern University",
+"district": "South",
+"address": "21982 University Lane",
+"city": "Orange Beach",
+"zip": "36561",
+"notes": "Online university with Orange Beach headquarters.",
+"contacts": [
+{
+"name": "Dr. Ken Styron",
+"title": "Contact",
+"phone": "251-979-2771",
+"email": "ken.styron@columbiasouthern.edu"
+}
+]
+},
+{
+"id": "11459766293",
+"name": "Island House Inc.",
+"district": "South",
+"address": "26650 Perdido Beach Blvd",
+"city": "Orange Beach",
+"zip": "36561",
+"notes": "Mid-size condo complex. Call main line for front desk/HOA manager.",
+"contacts": []
+},
+{
+"id": "11459749244",
+"name": "Phoenix IX Owners Association Inc.",
+"district": "South",
+"address": "PO Box 1339",
+"city": "Gulf Shores",
+"zip": "36547",
+"notes": "Managed by Brett-Robinson.",
+"contacts": [
+{
+"name": "Bill Brett",
+"title": "Property Manager",
+"phone": "251-948-1929",
+"email": "billb@brettrobinson.com"
+}
+]
+},
+{
+"id": "11459770403",
+"name": "Lowe's Home Centers Inc. #577",
+"district": "South",
+"address": "3101 S McKenzie St",
+"city": "Foley",
+"zip": "36535",
+"notes": "Store #577, District 836.",
+"contacts": [
+{
+"name": "Store Manager",
+"title": "District Manager Contact",
+"phone": "251-943-3080",
+"email": ""
+}
+]
+},
+{
+"id": "11459749855",
+"name": "BFG SRID Gulf Shores Propco IV LLC",
+"district": "South",
+"address": "",
+"city": "Gulf Shores",
+"zip": "",
+"notes": "Commercial real estate investment entity. Identify operating tenant.",
+"contacts": []
+},
+{
+"id": "11459750626",
+"name": "Lighthouse Condo Association",
+"district": "South",
+"address": "455 E Beach Blvd",
+"city": "Gulf Shores",
+"zip": "36542",
+"notes": "251-unit self-managed building.",
+"contacts": [
+{
+"name": "Butch Denmark",
+"title": "Senior Management",
+"phone": "251-975-0350",
+"email": "LighthouseCOA@gmail.com"
+},
+{
+"name": "Jennifer Nelson",
+"title": "Building Maintenance",
+"phone": "",
+"email": "Jen.LighthouseCOA@gmail.com"
+}
+]
+},
+{
+"id": "11459731071",
+"name": "Lambert's Cafe III Inc.",
+"district": "South",
+"address": "2981 S McKenzie Street",
+"city": "Foley",
+"zip": "36535",
+"notes": "Famous home cookin' restaurant.",
+"contacts": [
+{
+"name": "Patricia Lambert",
+"title": "Owner",
+"phone": "904-226-5821",
+"email": "lamberts1@throwedrolls.com"
+}
+]
+},
+{
+"id": "11459708879",
+"name": "Coastal Orange Beach LLC",
+"district": "South",
+"address": "25722 Perdido Beach Blvd",
+"city": "Orange Beach",
+"zip": "36561",
+"notes": "Commercial property. Identify on-site manager.",
+"contacts": []
+},
+{
+"id": "11459726722",
+"name": "Phoenix VII Owners Association",
+"district": "South",
+"address": "PO Box 1339",
+"city": "Gulf Shores",
+"zip": "36547",
+"notes": "Managed by Brett-Robinson.",
+"contacts": [
+{
+"name": "Bill Brett",
+"title": "Property Manager",
+"phone": "251-948-1929",
+"email": "billb@brettrobinson.com"
+}
+]
+},
+{
+"id": "11459726312",
+"name": "Overseas Hardwoods Company",
+"district": "South",
+"address": "24 Tacon Street",
+"city": "Mobile",
+"zip": "36607",
+"notes": "Hardwood lumber operations.",
+"contacts": [
+{
+"name": "Lee Robinson",
+"title": "President",
+"phone": "251-330-7707",
+"email": "leejr@ohc.net"
+}
+]
+},
+{
+"id": "11459750911",
+"name": "Gulf Shores City Schools BOE",
+"district": "South",
+"address": "300 East 16th Avenue",
+"city": "Gulf Shores",
+"zip": "36542",
+"notes": "",
+"contacts": [
+{
+"name": "Dr. Matt Akin",
+"title": "Superintendent",
+"phone": "251-968-9873",
+"email": "makin@gsboe.org"
+}
+]
+},
+{
+"id": "11459765643",
+"name": "Phoenix VI Owners Association",
+"district": "South",
+"address": "PO Box 1339",
+"city": "Gulf Shores",
+"zip": "36547",
+"notes": "Managed by Brett-Robinson.",
+"contacts": [
+{
+"name": "Bill Brett",
+"title": "Property Manager",
+"phone": "251-948-1929",
+"email": "billb@brettrobinson.com"
+}
+]
+},
+{
+"id": "11459747055",
+"name": "Crystal Shores West Owners Association",
+"district": "South",
+"address": "PO Box 135",
+"city": "Gulf Shores",
+"zip": "36547",
+"notes": "Managed by Coastline Management. 108 units, 14 stories.",
+"contacts": [
+{
+"name": "Coastline Mgmt",
+"title": "Property Manager",
+"phone": "251-216-7100",
+"email": "worden@coastlinemgmt.com"
+}
+]
+},
+{
+"id": "11459785180",
+"name": "Phoenix Gulf Shores II Owners Association",
+"district": "South",
+"address": "PO Box 1339",
+"city": "Gulf Shores",
+"zip": "36547",
+"notes": "Managed by Brett-Robinson.",
+"contacts": [
+{
+"name": "Bill Brett",
+"title": "Property Manager",
+"phone": "251-948-1929",
+"email": "billb@brettrobinson.com"
+}
+]
+},
+{
+"id": "11459746371",
+"name": "Hangout in Gulf Shores LLC",
+"district": "South",
+"address": "101 E. Beach Blvd",
+"city": "Gulf Shores",
+"zip": "36547",
+"notes": "Same ownership as Cotton Bayou Holdings LLC.",
+"contacts": [
+{
+"name": "Omer Ramot",
+"title": "Director of Operations",
+"phone": "251-948-3030",
+"email": "info@thehangout.com"
+}
+]
+},
+{
+"id": "11459768298",
+"name": "Solid Waste Disposal Authority",
+"district": "Central",
+"address": "15093 Landfill Drive",
+"city": "Summerdale",
+"zip": "36580",
+"notes": "Baldwin County solid waste operations.",
+"contacts": [
+{
+"name": "Terri Graham",
+"title": "Primary Contact",
+"phone": "251-972-6878",
+"email": "tgraham@baldwincountyswda.org"
+}
+]
+},
+{
+"id": "11459767300",
+"name": "Balmaquien Hospitality LLC",
+"district": "South",
+"address": "113 Baybridge Drive",
+"city": "Gulf Breeze",
+"zip": "32561",
+"notes": "Likely holding company tied to Perdido Beach Resort.",
+"contacts": [
+{
+"name": "Dee Richardson",
+"title": "Managing Director",
+"phone": "251-981-9811",
+"email": "drichardson@perdidobeachresort.com"
+}
+]
+},
+{
+"id": "11459751118",
+"name": "Rock Point Village LLC",
+"district": "South",
+"address": "113 Bay Bridge Drive",
+"city": "Gulf Breeze",
+"zip": "32561",
+"notes": "Likely Perdido Beach Resort-associated property.",
+"contacts": [
+{
+"name": "Dee Richardson",
+"title": "Managing Director",
+"phone": "251-981-9811",
+"email": "drichardson@perdidobeachresort.com"
+}
+]
+},
+{
+"id": "11459749256",
+"name": "PalletOne Inc.",
+"district": "South",
+"address": "PO Box 819",
+"city": "Bartow",
+"zip": "33831",
+"notes": "Baldwin County pallet manufacturing plant.",
+"contacts": [
+{
+"name": "Jimmy Wilson",
+"title": "Buyer",
+"phone": "251-405-3193",
+"email": "j.wilson@palletone.com"
+}
+]
+},
+{
+"id": "11459747035",
+"name": "Escapes to the Shores Condo Association",
+"district": "South",
+"address": "24060 Perdido Beach Blvd",
+"city": "Orange Beach",
+"zip": "36561",
+"notes": "Managed by LaTour Hotels & Resorts. Timeshare-structured condo.",
+"contacts": [
+{
+"name": "LaTour Mgmt",
+"title": "Property Manager",
+"phone": "251-315-6853",
+"email": "info@latourhotelsandresorts.com"
+}
+]
+},
+{
+"id": "11459784661",
+"name": "A&R Properties & Rental LLC",
+"district": "South",
+"address": "PO Box 2138",
+"city": "Gulf Shores",
+"zip": "36547",
+"notes": "Local property management/rental firm.",
+"contacts": []
+},
+{
+"id": "11459745315",
+"name": "AMC Theatres",
+"district": "South",
+"address": "4751 Wharf Pkwy",
+"city": "Orange Beach",
+"zip": "36561",
+"notes": "15-screen theater at The Wharf.",
+"contacts": [
+{
+"name": "General Manager",
+"title": "On-Site GM",
+"phone": "251-948-4100",
+"email": ""
+}
+]
+},
+{
+"id": "11459783625",
+"name": "Rabren General Contractors",
+"district": "South",
+"address": "306 Persimmon Drive",
+"city": "Auburn",
+"zip": "36830",
+"notes": "Major construction contractor with Baldwin County projects.",
+"contacts": [
+{
+"name": "Matt Rabren",
+"title": "President & CEO",
+"phone": "334-319-2282",
+"email": "mattrabren@rabren.com"
+},
+{
+"name": "Stewart Kaye",
+"title": "VP Operations",
+"phone": "334-319-5293",
+"email": "stewartkaye@rabren.com"
+},
+{
+"name": "Jon Rabren",
+"title": "VP Operations",
+"phone": "334-319-1325",
+"email": "jonrabren@rabren.com"
+}
+]
+},
+{
+"id": "11459745251",
+"name": "Phoenix V Association Inc.",
+"district": "South",
+"address": "24400 Perdido Beach Blvd",
+"city": "Orange Beach",
+"zip": "36561",
+"notes": "Managed by Coastline Management. Board email: phoenixvhoa@gmail.com.",
+"contacts": [
+{
+"name": "Mark Escue",
+"title": "HOA President",
+"phone": "817-821-0736",
+"email": "markescuebod@yahoo.com"
+},
+{
+"name": "Shannon Eney",
+"title": "VP",
+"phone": "206-979-1876",
+"email": "shannoneneyHOA@outlook.com"
+},
+{
+"name": "Ted Sendak",
+"title": "Treasurer",
+"phone": "256-325-3709",
+"email": "tsendak@aol.com"
+}
+]
+},
+{
+"id": "11459734505",
+"name": "City of Fairhope",
+"district": "Central",
+"address": "PO Box 429",
+"city": "Fairhope",
+"zip": "36533",
+"notes": "City also operates own utilities.",
+"contacts": [
+{
+"name": "Sherry Sullivan",
+"title": "Mayor",
+"phone": "251-990-0100",
+"email": "sherry.sullivan@fairhopeal.gov"
+},
+{
+"name": "Brittany Chandler",
+"title": "Utilities PR Coordinator",
+"phone": "251-278-7234",
+"email": "brittany.chandler@fairhopeal.gov"
+},
+{
+"name": "Lisa Hanks",
+"title": "City Clerk",
+"phone": "251-928-2136",
+"email": "lisa.hanks@fairhopeal.gov"
+}
+]
+},
+{
+"id": "11459770194",
+"name": "LV Petroleum LLC",
+"district": "South",
+"address": "7210 Placid Street",
+"city": "Las Vegas",
+"zip": "89119",
+"notes": "Likely operates fuel/convenience locations in Baldwin County. Identify local site manager.",
+"contacts": []
+},
+{
+"id": "11459771099",
+"name": "Orange Beach Water, Sewer and Fire",
+"district": "South",
+"address": "25097 Canal Road",
+"city": "Orange Beach",
+"zip": "36561",
+"notes": "",
+"contacts": [
+{
+"name": "Judy Sullivan",
+"title": "General Manager",
+"phone": "251-981-4233",
+"email": "orangebeachwater@obwaterauthority.com"
+},
+{
+"name": "Debbie Thomas",
+"title": "Office Manager",
+"phone": "",
+"email": "debbiethomas@obwaterauthority.com"
+}
+]
+},
+{
+"id": "11459751524",
+"name": "CRR Hospitality LLC",
+"district": "South",
+"address": "113 Baybridge Drive",
+"city": "Gulf Breeze",
+"zip": "32561",
+"notes": "Likely tied to Perdido Beach Resort.",
+"contacts": [
+{
+"name": "Dee Richardson",
+"title": "Managing Director",
+"phone": "251-981-9811",
+"email": "drichardson@perdidobeachresort.com"
+}
+]
+},
+{
+"id": "11459752473",
+"name": "Saunders Yachtworks LLC",
+"district": "South",
+"address": "PO Box 4349",
+"city": "Gulf Shores",
+"zip": "36547",
+"notes": "Marine services in Gulf Shores. Dir of Ops: Boyd Siegel.",
+"contacts": [
+{
+"name": "Johnny Fitzgerald",
+"title": "President",
+"phone": "251-456-4507",
+"email": "jfitzgerald@saundersyacht.com"
+},
+{
+"name": "Boyd Siegel",
+"title": "Director of Operations",
+"phone": "",
+"email": "bsiegel@saundersyacht.com"
+}
+]
+},
+{
+"id": "11459745750",
+"name": "Home Depot USA Inc.",
+"district": "South",
+"address": "Multiple Locations",
+"city": "",
+"zip": "",
+"notes": "Baldwin County locations: Foley and Spanish Fort.",
+"contacts": [
+{
+"name": "Matthew Merrick",
+"title": "District Manager, Services",
+"phone": "404-502-9195",
+"email": "matthew_merrick@homedepot.com"
+}
+]
+},
+{
+"id": "11459784445",
+"name": "Cotton Bayou Holdings LLC",
+"district": "South",
+"address": "101 E. Beach Blvd",
+"city": "Gulf Shores",
+"zip": "36547",
+"notes": "Same ownership as Hangout in Gulf Shores LLC.",
+"contacts": [
+{
+"name": "Omer Ramot",
+"title": "Director of Operations",
+"phone": "251-948-3030",
+"email": "info@thehangout.com"
+}
+]
+},
+{
+"id": "11520563600",
+"name": "PalletOne",
+"district": "Central",
+"address": "22640 Co Rd 64",
+"city": "Robertsdale",
+"zip": "36567",
+"notes": "Robertsdale pallet manufacturing facility.",
+"contacts": [
+{
+"name": "Jimmy Wilson",
+"title": "Contact",
+"phone": "251-979-6742",
+"email": "jimmywilson@bay-wood-products.com"
+}
+]
+},
+{
+"id": "11520881002",
+"name": "Gulf Shores International Airport",
+"district": "South",
+"address": "950 State Hwy 59",
+"city": "Gulf Shores",
+"zip": "36542",
+"notes": "Regional airport serving Gulf Shores area.",
+"contacts": [
+{
+"name": "J. Fosnaugh",
+"title": "Airport Contact",
+"phone": "251-967-3968",
+"email": "jFosnaugh@flyjka.com"
+}
+]
+},
+{
+"id": "11520971375",
+"name": "68 Ventures",
+"district": "Central",
+"address": "26051 Predazzer Ln, Suite A",
+"city": "Daphne",
+"zip": "36527",
+"notes": "Major Alabama developer and investor based in Daphne.",
+"contacts": [
+{
+"name": "K. Garrett",
+"title": "Director of Communications & Talent",
+"phone": "251-423-9242",
+"email": "kgarrett@68ventures.com"
+}
+]
+},
+{
+"id": "11520977249",
+"name": "Amazon",
+"district": "Central",
+"address": "",
+"city": "",
+"zip": "",
+"notes": "Potential large load prospect for Baldwin County facility.",
+"contacts": [
+{
+"name": "Amazon Economic Development",
+"title": "Economic Development Manager",
+"phone": "901-412-8771",
+"email": "masdebor@amazon.com"
+}
+]
+},
+{
+"id": "11521105827",
+"name": "Butting",
+"district": "Central",
+"address": "104 Carolyn Court",
+"city": "Spanish Fort",
+"zip": "36527",
+"notes": "German industrial pipe manufacturer with Spanish Fort facility.",
+"contacts": [
+{
+"name": "Adrian Rochofski",
+"title": "USA CEO & Managing Director",
+"phone": "251-510-8806",
+"email": "adrian.rochofski@butting.com"
+},
+{
+"name": "Bridget Wilson",
+"title": "HR Director",
+"phone": "251-510-8113",
+"email": "bridget.wilson@butting.com"
+}
+]
+},
+{
+"id": "11521115806",
+"name": "Alabama Beaches",
+"district": "South",
+"address": "P.O. Drawer 457",
+"city": "Gulf Shores",
+"zip": "36547",
+"notes": "Gulf Shores tourism and beach destination marketing.",
+"contacts": [
+{
+"name": "B. Gendler",
+"title": "Contact",
+"phone": "251-974-4620",
+"email": "bgendler@alabamabeaches.com"
+}
+]
+},
+{
+"id": "11521102309",
+"name": "D.R. Horton",
+"district": "Central",
+"address": "25366 Profit Drive, #1",
+"city": "Daphne",
+"zip": "36526",
+"notes": "Major residential homebuilder with large Baldwin County presence.",
+"contacts": [
+{
+"name": "S. Whitehurst",
+"title": "Contact",
+"phone": "251-447-0329",
+"email": "sdwhitehurst@drhorton.com"
+}
+]
+},
+{
+"id": "11521123362",
+"name": "North Baldwin Infirmary",
+"district": "North",
+"address": "1815 Hand Ave",
+"city": "Bay Minette",
+"zip": "36507",
+"notes": "Hospital in Bay Minette serving north Baldwin County.",
+"contacts": [
+{
+"name": "Kenny Breal",
+"title": "President",
+"phone": "",
+"email": "kenny.breal@infirmaryhealth.org"
+}
+]
+},
+{
+"id": "11521133306",
+"name": "KeyPort Warehousing",
+"district": "Central",
+"address": "30427 County Road 49",
+"city": "Loxley",
+"zip": "36551",
+"notes": "Industrial warehousing facility.",
+"contacts": [
+{
+"name": "Gary Unger",
+"title": "Contact",
+"phone": "",
+"email": "gary.unger@keyportwarehousing.com"
+}
+]
+},
+{
+"id": "11521132973",
+"name": "Mingledorff's",
+"district": "Central",
+"address": "30020 County Rd 49",
+"city": "Loxley",
+"zip": "36551",
+"notes": "HVAC equipment distributor.",
+"contacts": [
+{
+"name": "R. Center",
+"title": "Contact",
+"phone": "",
+"email": "rcenter@mingledorffs.com"
+}
+]
+},
+{
+"id": "11521119991",
+"name": "Imperial Dade",
+"district": "Central",
+"address": "29654 Co Rd 49",
+"city": "Loxley",
+"zip": "36551",
+"notes": "Formerly Dade Paper. Foodservice and janitorial supply distribution.",
+"contacts": [
+{
+"name": "C. Huey",
+"title": "Contact",
+"phone": "",
+"email": "chuey@imperialdade.com"
+}
+]
+},
+{
+"id": "11521120007",
+"name": "Baldwin Health",
+"district": "South",
+"address": "112 West Laurel Ave",
+"city": "Foley",
+"zip": "36535",
+"notes": "Primary healthcare system serving Baldwin County.",
+"contacts": [
+{
+"name": "Margaret Roley",
+"title": "CEO",
+"phone": "251-949-3400",
+"email": "margaret_roley@baldwinhealth.com"
+},
+{
+"name": "Tyler Hillis",
+"title": "Secondary Contact",
+"phone": "",
+"email": ""
+}
+]
+},
+{
+"id": "11521132889",
+"name": "Coastal Alabama Community College",
+"district": "North",
+"address": "1900 Highway 31 South",
+"city": "Bay Minette",
+"zip": "36507",
+"notes": "Multiple campuses across Baldwin County.",
+"contacts": [
+{
+"name": "Joshua Duplantis",
+"title": "Dean, Workforce Development",
+"phone": "251-250-9595",
+"email": "joshua.duplantis@coastalalabama.edu"
+}
+]
+},
+{
+"id": "11530215257",
+"name": "Baldwin County Commission",
+"district": "North",
+"address": "312 Court House Square, Suite 12",
+"city": "Bay Minette",
+"zip": "36507",
+"notes": "County government headquarters.",
+"contacts": [
+{"name": "Roger Rendleman", "title": "County Administrator", "phone": "", "email": "roger.rendleman@baldwincountyal.gov"},
+{"name": "Matt McKenzie", "title": "Chairman", "phone": "", "email": "matt.mckenzie@baldwincountyal.gov"},
+{"name": "Jeb Ball", "title": "Vice-Chairman", "phone": "251-937-0300", "email": "jeb.ball@baldwincountyal.gov"},
+{"name": "Skip Gruber", "title": "Commissioner", "phone": "251-943-5061", "email": "cgruber@baldwincountyal.gov"},
+{"name": "Mark Acreman", "title": "Commissioner", "phone": "251-972-8557", "email": "mark.acreman@baldwincountyal.gov"},
+{"name": "Frank Lundy", "title": "County Engineer", "phone": "251-972-8558", "email": "FLundy@baldwincountyal.gov"},
+{"name": "Jay Dickson", "title": "Planning & Zoning Director", "phone": "251-580-1655", "email": "Jay.Dickson@baldwincountyal.gov"},
+{"name": "Eddie Harper", "title": "Senior Building Official", "phone": "251-972-6837", "email": "Eddie.Harper@baldwincountyal.gov"},
+{"name": "Taylor Bufkin", "title": "Public Information", "phone": "", "email": "taylor.bufkin@baldwincountyal.gov"},
+{"name": "Dana Austin", "title": "Accounting Manager", "phone": "251-937-0393", "email": "daustin@baldwincountyal.gov"},
+{"name": "Anu Gary", "title": "Staff", "phone": "251-580-2564", "email": "agary@baldwincountyal.gov"},
+{"name": "Barbara Pate", "title": "Exec Assistant to Commission", "phone": "251-580-1866", "email": "Barbara.pate@baldwincountyal.gov"},
+{"name": "Jeannie Peerson", "title": "Exec Assistant", "phone": "", "email": "jeannie.peerson@baldwincountyal.gov"}
+]
+}
+];
+const MULTI_LOCATIONS = {
+"11459710593": [
+{
+"name": "Foley Supercenter #904",
+"address": "2200 S McKenzie St, Foley, AL 36535"
+},
+{
+"name": "Gulf Shores Supercenter #2748",
+"address": "170 E Fort Morgan Rd, Gulf Shores, AL 36542"
+},
+{
+"name": "Orange Beach #5653",
+"address": "27051 Perdido Beach Blvd, Orange Beach, AL 36561"
+}
+],
+"11459717902": [
+{
+"name": "Publix Orange Beach",
+"address": "25771 Perdido Beach Blvd, Orange Beach, AL 36561"
+},
+{
+"name": "Publix Gulf Shores",
+"address": "3840 Gulf Shores Pkwy, Gulf Shores, AL 36542"
+},
+{
+"name": "Publix Foley #2109",
+"address": "2900 S McKenzie St, Foley, AL 36535"
+},
+{
+"name": "Publix Foley South",
+"address": "1500 S Juniper St, Foley, AL 36535"
+}
+],
+"11459771970": [
+{
+"name": "City Hall",
+"address": "3900 William Silvers Pkwy, Orange Beach, AL 36561"
+},
+{
+"name": "Police Dept",
+"address": "3960 Orange Beach Blvd, Orange Beach, AL 36561"
+}
+],
+"11459717229": [
+{
+"name": "Rouses #54 Gulf Shores",
+"address": "1545 Gulf Shores Pkwy, Gulf Shores, AL 36542"
+},
+{
+"name": "Rouses #76 Orange Beach",
+"address": "25405 Perdido Beach Blvd, Orange Beach, AL 36561"
+}
+],
+"11459731848": [
+{
+"name": "Supercharger - The Wharf",
+"address": "4830 Main St, Orange Beach, AL 36561"
+},
+{
+"name": "Supercharger - Buc-ee's",
+"address": "1291 Gulf Shores Pkwy, Gulf Shores, AL 36542"
+}
+],
+"11459729933": [
+{
+"name": "Farm - Hazen Road",
+"address": "22600 Hazen Rd, Loxley, AL 36551"
+},
+{
+"name": "Farm - Hwy 90",
+"address": "US-90, Loxley, AL 36551"
+}
+],
+"11459718173": [
+{
+"name": "Turquoise Place Tower I",
+"address": "26302 Perdido Beach Blvd, Orange Beach, AL 36561"
+},
+{
+"name": "Turquoise Place Tower II",
+"address": "26350 Perdido Beach Blvd, Orange Beach, AL 36561"
+}
+],
+"11459736243": [
+{
+"name": "BOE Central Office",
+"address": "2600-A North Hand Ave, Bay Minette, AL 36507"
+},
+{
+"name": "Foley High School",
+"address": "1 Pride Drive, Foley, AL 36535"
+},
+{
+"name": "Gulf Shores High School",
+"address": "700 E 22nd Ave, Gulf Shores, AL 36542"
+},
+{
+"name": "Fairhope High School",
+"address": "1 Pirate Drive, Fairhope, AL 36532"
+}
+],
+"11459726400": [
+{
+"name": "Brett-Robinson HQ",
+"address": "27075 Marina Rd, Orange Beach, AL 36561"
+},
+{
+"name": "Phoenix X",
+"address": "24900 Perdido Beach Blvd, Orange Beach, AL 36561"
+}
+],
+"11459711917": [
+{
+"name": "Utilities Billing Office",
+"address": "1629 East 1st St, Gulf Shores, AL 36547"
+},
+{
+"name": "Water Treatment Plant",
+"address": "100 Clubhouse Dr, Gulf Shores, AL 36542"
+}
+]
+};
+const PROGRAMS = [
+{
+"id": "edi",
+"label": "EDI Rate",
+"icon": "\u26a1"
+},
+{
+"id": "solar",
+"label": "Solar",
+"icon": "\u2600\ufe0f"
+},
+{
+"id": "audit",
+"label": "Energy Audit",
+"icon": "\ud83d\udd0d"
+},
+{
+"id": "auto",
+"label": "Automatic Billing",
+"icon": "\ud83d\udcc5"
+},
+{
+"id": "demand",
+"label": "Demand Rate",
+"icon": "\ud83d\udcc9"
+},
+{
+"id": "roundup",
+"label": "Operation Round Up",
+"icon": "\ud83e\udd1d"
+}
+];
+const ITYPES = ["Meeting", "Phone Call", "Email", "Site Visit", "Event", "Other"];
+const DISTRICT_STYLE = {"North": {"color": "#037f4c", "bg": "rgba(3,127,76,0.09)"}, "Central": {"color": "#0077b6", "bg": "rgba(0,119,182,0.09)"}, "South": {"color": "#e36414", "bg": "rgba(227,100,20,0.09)"}};
+const CAT_COLORS = {"Past Issue": "#C0392B", "Expansion": "#0E7C5B", "Way We Helped": "#017381", "Rate History": "#003A5D", "Political Context": "#6B4EA0", "Key Contact Note": "#C9A153", "General": "#6B8A96", "Other": "#9BB0B8"};
+const CAT_ICONS = {"Past Issue": "\u26a0\ufe0f", "Expansion": "\ud83d\udcc8", "Way We Helped": "\ud83e\udd1d", "Rate History": "\ud83d\udcca", "Political Context": "\ud83c\udfdb", "Key Contact Note": "\ud83d\udc64", "General": "\ud83d\udcdd", "Other": "\ud83d\uddc2"};
+
+// ── MOCK ENERGY DEFAULTS (used when no real data entered yet) ─────────────────
+// Values are realistic estimates by account type. Editable per-account in the dashboard.
+const ENERGY_MOCK = {
+  "11459751104": {demand:"2,847",kwh:"1,842,000",bill:"$134,200",rate:"IS-TOU", y:{"2020":19800000,"2021":20400000,"2022":21100000,"2023":21900000,"2024":22800000}},
+  "11459726519": {demand:"1,240",kwh:"892,000",bill:"$64,800",rate:"IS",       y:{"2020":9100000,"2021":9400000,"2022":9600000,"2023":9200000,"2024":9800000}},
+  "11459729933": {demand:"1,180",kwh:"764,000",bill:"$55,600",rate:"IS",       y:{"2020":8200000,"2021":8500000,"2022":8400000,"2023":8900000,"2024":9100000}},
+  "11521105827": {demand:"980",kwh:"641,000",bill:"$46,700",rate:"IS",         y:{"2020":5800000,"2021":6100000,"2022":6400000,"2023":6700000,"2024":7100000}},
+  "11459710593": {demand:"820",kwh:"548,000",bill:"$39,900",rate:"GS-TOU",     y:{"2020":6100000,"2021":6300000,"2022":6500000,"2023":6200000,"2024":6400000}},
+  "11459717902": {demand:"640",kwh:"412,000",bill:"$30,100",rate:"GS-TOU",     y:{"2020":4400000,"2021":4600000,"2022":4700000,"2023":4900000,"2024":5100000}},
+  "11459732084": {demand:"1,420",kwh:"934,000",bill:"$68,000",rate:"GS-TOU",   y:{"2020":0,"2021":0,"2022":7100000,"2023":9200000,"2024":10800000}},
+  "11459727380": {demand:"590",kwh:"384,000",bill:"$28,000",rate:"IS",         y:{"2020":4100000,"2021":4200000,"2022":4300000,"2023":4100000,"2024":4400000}},
+  "11459745750": {demand:"430",kwh:"281,000",bill:"$20,500",rate:"GS-TOU",     y:{"2020":2900000,"2021":3000000,"2022":3100000,"2023":3000000,"2024":3200000}},
+  "11459748133": {demand:"860",kwh:"559,000",bill:"$40,700",rate:"GS-TOU",     y:{"2020":5400000,"2021":5600000,"2022":5800000,"2023":5700000,"2024":6100000}},
+  "11261102239": {demand:"720",kwh:"468,000",bill:"$34,100",rate:"GS-TOU",     y:{"2020":4800000,"2021":4400000,"2022":5100000,"2023":5300000,"2024":5600000}},
+  "11459746136": {demand:"380",kwh:"246,000",bill:"$17,900",rate:"GS",         y:{"2020":2600000,"2021":2500000,"2022":2700000,"2023":2800000,"2024":2900000}},
+  "11459730702": {demand:"220",kwh:"143,000",bill:"$10,400",rate:"GS",         y:{"2020":1500000,"2021":1400000,"2022":1600000,"2023":1600000,"2024":1700000}},
+  "11459718173": {demand:"290",kwh:"189,000",bill:"$13,800",rate:"GS",         y:{"2020":1900000,"2021":1800000,"2022":2000000,"2023":2100000,"2024":2200000}},
+  "11459711917": {demand:"310",kwh:"202,000",bill:"$14,700",rate:"GS",         y:{"2020":2000000,"2021":2100000,"2022":2200000,"2023":2300000,"2024":2400000}},
+  "11459768298": {demand:"440",kwh:"286,000",bill:"$20,800",rate:"IS",         y:{"2020":2800000,"2021":2900000,"2022":3000000,"2023":3100000,"2024":3200000}},
+  "11520881002": {demand:"280",kwh:"182,000",bill:"$13,200",rate:"GS",         y:{"2020":1700000,"2021":1600000,"2022":1800000,"2023":2000000,"2024":2200000}},
+  "11521120007": {demand:"520",kwh:"338,000",bill:"$24,600",rate:"GS",         y:{"2020":3200000,"2021":3300000,"2022":3400000,"2023":3500000,"2024":3600000}},
+  "11530215257": {demand:"180",kwh:"117,000",bill:"$8,500",rate:"GS",          y:{"2020":1100000,"2021":1150000,"2022":1200000,"2023":1250000,"2024":1300000}},
+  "11459736243": {demand:"940",kwh:"611,000",bill:"$44,500",rate:"GS",         y:{"2020":6400000,"2021":6500000,"2022":6600000,"2023":6700000,"2024":6900000}},
+  "11459747621": {demand:"260",kwh:"169,000",bill:"$12,300",rate:"GS",         y:{"2020":1600000,"2021":1700000,"2022":1750000,"2023":1800000,"2024":1900000}},
+  "11459750272": {demand:"95",kwh:"62,000",bill:"$4,500",rate:"GS",            y:{"2020":590000,"2021":610000,"2022":620000,"2023":640000,"2024":660000}},
+  "11459750911": {demand:"340",kwh:"221,000",bill:"$16,100",rate:"GS",         y:{"2020":2000000,"2021":2100000,"2022":2200000,"2023":2300000,"2024":2400000}},
+  "11459734505": {demand:"210",kwh:"137,000",bill:"$9,900",rate:"GS",          y:{"2020":1300000,"2021":1350000,"2022":1380000,"2023":1410000,"2024":1450000}},
+  "11459771099": {demand:"145",kwh:"94,000",bill:"$6,800",rate:"GS",           y:{"2020":850000,"2021":880000,"2022":920000,"2023":950000,"2024":980000}},
+  "11521132889": {demand:"480",kwh:"312,000",bill:"$22,700",rate:"GS",         y:{"2020":2900000,"2021":3000000,"2022":3100000,"2023":3150000,"2024":3200000}},
+};
+
+// ── ACCOUNT TYPE MAP (from Monday.com color_mm0p62aj column) ─────────────────
+const ACCOUNT_TYPE = {
+  "11261102239":"Commercial","11459710593":"Commercial","11459717902":"Commercial",
+  "11459715320":"Commercial","11459718173":"Commercial","11459728849":"Commercial",
+  "11459732084":"Commercial","11459717229":"Commercial","11459727380":"Commercial",
+  "11459748133":"Commercial","11459754737":"Commercial","11459727483":"Commercial",
+  "11459735417":"Commercial","11459731848":"Commercial","11459746136":"Commercial",
+  "11459714700":"Commercial","11459714775":"Commercial","11459726400":"Commercial",
+  "11459765650":"Commercial","11459730702":"Commercial","11459730430":"Commercial",
+  "11459750492":"Commercial","11459730871":"Commercial","11459745585":"Commercial",
+  "11459750160":"Commercial","11459766293":"Commercial","11459749244":"Commercial",
+  "11459770403":"Commercial","11459749855":"Commercial","11459750626":"Commercial",
+  "11459731071":"Commercial","11459708879":"Commercial","11459726722":"Commercial",
+  "11459765643":"Commercial","11459747055":"Commercial","11459785180":"Commercial",
+  "11459746371":"Commercial","11459767300":"Commercial","11459751118":"Commercial",
+  "11459747035":"Commercial","11459784661":"Commercial","11459745315":"Commercial",
+  "11459783625":"Commercial","11459745251":"Commercial","11459751524":"Commercial",
+  "11459752473":"Commercial","11459745750":"Commercial","11459784445":"Commercial",
+  "11520971375":"Commercial","11521115806":"Commercial","11521102309":"Commercial",
+  "11459754437":"Industrial","11459727234":"Industrial","11459729933":"Industrial",
+  "11459726519":"Industrial","11459726312":"Industrial","11459749256":"Industrial",
+  "11459751104":"Industrial","11459729824":"Industrial","11459728413":"Industrial",
+  "11459770194":"Industrial","11520563600":"Industrial","11520977249":"Industrial",
+  "11521105827":"Industrial","11521133306":"Industrial","11521132973":"Industrial",
+  "11521119991":"Industrial",
+  "11459736243":"Public","11459771970":"Public","11459748889":"Public",
+  "11459747621":"Public","11459750272":"Public","11459711917":"Public",
+  "11459730706":"Public","11459750911":"Public","11459768298":"Public",
+  "11459734505":"Public","11459771099":"Public","11520881002":"Public",
+  "11521123362":"Public","11521120007":"Public","11521132889":"Public",
+  "11530215257":"Public","11539847642":"Public",
+};
+
+const ACCOUNT_TYPE_ORDER = ["Commercial","Industrial","Public","Other"];
+const ACCOUNT_TYPE_ICONS = {"Commercial":"🏢","Industrial":"🏭","Public":"🏛","Other":"📦"};
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+const ls = {
+  get:(k,fb)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):fb;}catch{return fb;}},
+  set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
+};
+
+let tierMap = Object.assign({}, MONDAY_TIERS, ls.get('ka_tiers',{}));
+let logs = (()=>{
+  const saved = ls.get('ka_logs',[]);
+  const savedIds = new Set(saved.map(l=>l.id));
+  const fresh = MONDAY_INTS.filter(l=>!savedIds.has(l.id));
+  return [...saved,...fresh].sort((a,b)=>new Date(b.date)-new Date(a.date));
+})();
+let energyData = ls.get('ka_energy',{});
+let progData   = ls.get('ka_progs',{});
+let histIntel  = ls.get('ka_hist_intel',{});
+let sponsorData = ls.get('ka_sponsor',{});
+
+function saveTiers(){ ls.set('ka_tiers', tierMap); }
+function saveLogs(){  ls.set('ka_logs', logs.filter(l=>!l.fromMonday)); }
+function saveEnergy(){ ls.set('ka_energy', energyData); }
+function saveProgs(){  ls.set('ka_progs', progData); }
+function saveHist(){   ls.set('ka_hist_intel', histIntel); }
+function saveSponsor(){ ls.set('ka_sponsor', sponsorData); }
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+const today = ()=>new Date().toISOString().split('T')[0];
+const daysSince = d=>d?Math.floor((Date.now()-new Date(d))/86400000):null;
+const fmt = d=>d?new Date(d+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}):'—';
+const esc = s=>s?String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'):'';
+
+function getLastContact(id){
+  return logs.filter(l=>l.accountId===id).sort((a,b)=>new Date(b.date)-new Date(a.date))[0]?.date||null;
+}
+function getAccountLogs(id){
+  return logs.filter(l=>l.accountId===id).sort((a,b)=>new Date(b.date)-new Date(a.date));
+}
+function uInfo(acct){
+  const tier=TIERS.find(t=>t.name===tierMap[acct.id]);
+  if(!tier)return null;
+  const last=getLastContact(acct.id);
+  if(!last)return{pct:100,overdue:true,label:'Never contacted',tier};
+  const days=daysSince(last);
+  const pct=Math.min((days/tier.cadence)*100,100);
+  const overdue=days>tier.cadence;
+  const diff=Math.abs(days-tier.cadence);
+  return{days,pct,overdue,label:overdue?`${diff}d overdue`:`${diff}d remaining`,tier};
+}
+function tlClass(acct){
+  const last=getLastContact(acct.id);
+  if(!last)return'red';
+  const d=daysSince(last);
+  return d<=60?'green':d<=180?'yellow':'red';
+}
+function mapsUrl(addr,city,zip){
+  if(!addr||!city)return null;
+  if(/^p\.?o\.?\s*box/i.test(addr.trim()))return null;
+  if(/multiple/i.test(addr))return null;
+  return`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${addr}, ${city} ${zip||''}`)}`;
+}
+function ring(pct,overdue,color){
+  const r=13,c=2*Math.PI*r,dash=(pct/100)*c;
+  const col=overdue?'#C0392B':(color||'#017381');
+  const track=overdue?'rgba(192,57,43,0.1)':'rgba(0,58,93,0.07)';
+  return`<svg width="34" height="34" viewBox="0 0 34 34"><circle cx="17" cy="17" r="${r}" fill="none" stroke="${track}" stroke-width="2.5"/><circle cx="17" cy="17" r="${r}" fill="none" stroke="${col}" stroke-width="2.5" stroke-dasharray="${dash.toFixed(2)} ${c.toFixed(2)}" stroke-linecap="round" transform="rotate(-90 17 17)"/></svg>`;
+}
+
+// ── MONDAY.COM SYNC ── fetch existing → prepend new entry → write back + create subitem ──
+async function writeToMonday(itemId, date, type, notes, loggedBy){
+  const byLine = loggedBy ? `Logged by: ${loggedBy}` : '';
+  const newEntry = `[${type}] ${date}${byLine ? '\n'+byLine : ''}\n${notes}`;
+
+  // Step 1: fetch current Interactions column value
+  let existing = '';
+  try {
+    const fetchQ = `{boards(ids:[${BOARD_ID}]){items_page(limit:1,query_params:{rules:[{column_id:"id",compare_value:["${itemId}"]}]}){items{column_values(ids:["long_text_mm1jq6vw"]){... on LongTextValue{text}}}}}}`;
+    const fr = await fetch('https://api.monday.com/v2',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':TOKEN,'API-Version':'2024-01'},
+      body:JSON.stringify({query:fetchQ})
+    });
+    const fd = await fr.json();
+    existing = fd?.data?.boards?.[0]?.items_page?.items?.[0]?.column_values?.[0]?.text || '';
+  } catch(e){ /* proceed with empty existing */ }
+
+  // Step 2: build combined log — new entry on top, separator, prior content
+  const SEP = '\n─────────────────────────────\n';
+  const combined = existing ? newEntry + SEP + existing : newEntry;
+
+  // Step 3: write back to parent item Interactions column + update date
+  const colVals = JSON.stringify({
+    "date_mm0prnqq": {date},
+    "long_text_mm1jq6vw": {text: combined}
+  });
+  const mutation = `mutation{change_multiple_column_values(board_id:${BOARD_ID},item_id:${itemId},column_values:${JSON.stringify(colVals)}){id}}`;
+  const res = await fetch('https://api.monday.com/v2',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':TOKEN,'API-Version':'2024-01'},
+    body:JSON.stringify({query:mutation})
+  });
+  if(!res.ok) throw new Error(`HTTP ${res.status}`);
+  const data = await res.json();
+  if(data.errors) throw new Error(data.errors[0]?.message||'API error');
+
+  // Step 4: create a subitem under the account for this interaction
+  // Subitem name = "[Type] · Date" for clean at-a-glance reading in Monday.com
+  const subitemName = `[${type}] · ${date}`;
+  const subColVals = JSON.stringify({
+    "date0":           {date},
+    "text_mm1tk7dr":   type,
+    "text_mm1ts6eq":   loggedBy || 'Lee Johnson',
+    "text_mm19x8n7":   notes,
+    "color_mm1tw30k":  {"label": "Done"}
+  });
+  const subMutation = `mutation{create_subitem(parent_item_id:${itemId},item_name:${JSON.stringify(subitemName)},column_values:${JSON.stringify(subColVals)}){id}}`;
+  await fetch('https://api.monday.com/v2',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':TOKEN,'API-Version':'2024-01'},
+    body:JSON.stringify({query:subMutation})
+  });
+
+  return data;
+}
+
+// ── CURRENT VIEW ──────────────────────────────────────────────────────────────
+let currentView = 'revenue';
+let currentSearch = '';
+let modalAcct = null;
+let modalSelContact = 0;
+let modalSelPin = 0;
+let modalEditEnergy = false;
+
+// ── RENDER STATS ──────────────────────────────────────────────────────────────
+function renderStats(){
+  const classified = ACCOUNTS.filter(a=>tierMap[a.id]);
+  const rev = ACCOUNTS.filter(a=>tierMap[a.id]==='Large Revenue').length;
+  const load = ACCOUNTS.filter(a=>tierMap[a.id]==='Large Load').length;
+  const g = classified.filter(a=>tlClass(a)==='green').length;
+  const y = classified.filter(a=>tlClass(a)==='yellow').length;
+  const r = classified.filter(a=>tlClass(a)==='red').length;
+  document.getElementById('stat-rev').textContent = rev;
+  document.getElementById('stat-load').textContent = load;
+  document.getElementById('stat-green').textContent = g;
+  document.getElementById('stat-yellow').textContent = y;
+  document.getElementById('stat-red').textContent = r;
+}
+
+// ── CARD HTML ─────────────────────────────────────────────────────────────────
+function cardHtml(acct){
+  const tier=TIERS.find(t=>t.name===tierMap[acct.id]);
+  const ui=uInfo(acct);
+  const pct=ui?.pct||0;
+  const bar=ui?.overdue?'#C0392B':(tier?.color||'#017381');
+  const ds=DISTRICT_STYLE[acct.district];
+  const pc=acct.contacts?.[0];
+  const dsHtml=ds?`<span class="tbadge" style="background:${ds.bg};color:${ds.color};border-color:${ds.color}33">${esc(acct.district)}</span>`:'';
+  const tierHtml=tier?`<span class="tbadge" style="background:${tier.dim};color:${tier.color};border-color:${tier.color}28">${tier.short}</span>`:'';
+  const ringHtml=ui?`<div class="uw">${ring(pct,ui.overdue,tier?.color)}<div class="ul${ui.overdue?' ov':''}">${esc(ui.label)}</div></div>`:'';
+  return`<div class="card" onclick="openModal('${acct.id}')">
+    <div class="ch"><div class="cm">
+      <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:3px">${tierHtml}${dsHtml}</div>
+      <div class="cname">${esc(acct.name)}</div>
+      ${pc?`<div class="ctit">${esc(pc.name)}${pc.title?` · ${esc(pc.title)}`:''}</div>`:''}
+      ${acct.city?`<div class="ccity">${esc(acct.city)}</div>`:''}
+    </div>${ringHtml}</div>
+    <div class="pbar"><div class="pf" style="width:${pct}%;background:${bar}"></div></div>
+  </div>`;
+}
+
+// ── VIEWS ─────────────────────────────────────────────────────────────────────
+function renderRevenue(){
+  const q=currentSearch.toLowerCase();
+  const accts=ACCOUNTS.filter(a=>tierMap[a.id]==='Large Revenue'&&(!q||a.name.toLowerCase().includes(q)||(a.city||'').toLowerCase().includes(q)));
+  const grouped={};
+  ACCOUNT_TYPE_ORDER.forEach(t=>grouped[t]=[]);
+  accts.forEach(a=>{
+    const t=ACCOUNT_TYPE[a.id]||'Other';
+    if(!grouped[t])grouped[t]=[];
+    grouped[t].push(a);
+  });
+  let html=`<div class="vh"><div class="vt">💰 Revenue Accounts</div><div class="vs">${accts.length} accounts · Large Revenue tier</div></div>
+    <input class="srch" placeholder="Search revenue accounts…" oninput="currentSearch=this.value;renderRevenue()" value="${esc(currentSearch)}">`;
+  ACCOUNT_TYPE_ORDER.forEach(type=>{
+    const group=grouped[type];
+    if(!group||!group.length)return;
+    html+=`<div style="margin-bottom:18px">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:8px;padding-bottom:5px;border-bottom:2px solid var(--border)">
+        <span style="font-size:14px">${ACCOUNT_TYPE_ICONS[type]||'📦'}</span>
+        <span style="font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)">${type}</span>
+        <span style="font-size:9px;color:var(--mut);font-family:'Josefin Sans',sans-serif">${group.length} account${group.length!==1?'s':''}</span>
+      </div>
+      <div class="grid">${group.map(cardHtml).join('')}</div>
+    </div>`;
+  });
+  if(!accts.length)html+=`<div class="empty"><div class="et">No matches</div></div>`;
+  document.getElementById('view-revenue').innerHTML=html;
+}
+function renderLoad(){
+  const q=currentSearch.toLowerCase();
+  const accts=ACCOUNTS.filter(a=>tierMap[a.id]==='Large Load'&&(!q||a.name.toLowerCase().includes(q)));
+  const grouped={};
+  ACCOUNT_TYPE_ORDER.forEach(t=>grouped[t]=[]);
+  accts.forEach(a=>{ const t=ACCOUNT_TYPE[a.id]||'Other'; if(!grouped[t])grouped[t]=[]; grouped[t].push(a); });
+  let html=`<div class="vh"><div class="vt">⚡ Load Accounts</div><div class="vs">${accts.length} accounts · Large Load tier</div></div>
+    <div class="ph-box"><div style="font-size:22px;margin-bottom:6px">⚡</div><div style="font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:13px;color:var(--navy);margin-bottom:4px">Load data coming soon</div><div style="font-size:11px;color:var(--mut)">Share kWh or demand figures and I'll rank accounts by consumption.</div></div>
+    <input class="srch" placeholder="Search load accounts…" oninput="currentSearch=this.value;renderLoad()" value="${esc(currentSearch)}">`;
+  ACCOUNT_TYPE_ORDER.forEach(type=>{
+    const group=grouped[type];
+    if(!group||!group.length)return;
+    html+=`<div style="margin-bottom:18px">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:8px;padding-bottom:5px;border-bottom:2px solid var(--border)">
+        <span style="font-size:14px">${ACCOUNT_TYPE_ICONS[type]||'📦'}</span>
+        <span style="font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)">${type}</span>
+        <span style="font-size:9px;color:var(--mut);font-family:'Josefin Sans',sans-serif">${group.length} account${group.length!==1?'s':''}</span>
+      </div>
+      <div class="grid">${group.map(cardHtml).join('')}</div>
+    </div>`;
+  });
+  if(!accts.length)html+=`<div class="empty"><div class="et">No accounts in this tier</div></div>`;
+  document.getElementById('view-load').innerHTML=html;
+}
+function renderPolitical(){
+  const q=currentSearch.toLowerCase();
+  const accts=ACCOUNTS.filter(a=>tierMap[a.id]==='Political / Government'&&(!q||a.name.toLowerCase().includes(q)));
+  const grouped={};
+  ACCOUNT_TYPE_ORDER.forEach(t=>grouped[t]=[]);
+  accts.forEach(a=>{ const t=ACCOUNT_TYPE[a.id]||'Other'; if(!grouped[t])grouped[t]=[]; grouped[t].push(a); });
+  let html=`<div class="vh"><div class="vt">🏛 Political / Government</div><div class="vs">${accts.length} accounts</div></div>
+    <input class="srch" placeholder="Search…" oninput="currentSearch=this.value;renderPolitical()" value="${esc(currentSearch)}">`;
+  ACCOUNT_TYPE_ORDER.forEach(type=>{
+    const group=grouped[type];
+    if(!group||!group.length)return;
+    html+=`<div style="margin-bottom:18px">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:8px;padding-bottom:5px;border-bottom:2px solid var(--border)">
+        <span style="font-size:14px">${ACCOUNT_TYPE_ICONS[type]||'📦'}</span>
+        <span style="font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)">${type}</span>
+        <span style="font-size:9px;color:var(--mut);font-family:'Josefin Sans',sans-serif">${group.length} account${group.length!==1?'s':''}</span>
+      </div>
+      <div class="grid">${group.map(cardHtml).join('')}</div>
+    </div>`;
+  });
+  if(!accts.length)html+=`<div class="empty"><div class="et">No matches</div></div>`;
+  document.getElementById('view-political').innerHTML=html;
+}
+function renderInteractions(){
+  const classified=ACCOUNTS.filter(a=>tierMap[a.id]);
+  const groups={green:[],yellow:[],red:[]};
+  classified.forEach(a=>groups[tlClass(a)].push(a));
+  groups.green.sort((a,b)=>new Date(getLastContact(b.id)||0)-new Date(getLastContact(a.id)||0));
+  groups.yellow.sort((a,b)=>new Date(getLastContact(b.id)||0)-new Date(getLastContact(a.id)||0));
+  groups.red.sort((a,b)=>{const la=getLastContact(a.id),lb=getLastContact(b.id);if(!la&&!lb)return 0;if(!la)return-1;if(!lb)return 1;return new Date(la)-new Date(lb);});
+  function section(cls,emoji,label,accts){
+    if(!accts.length)return'';
+    const colors={green:'var(--green)',yellow:'var(--yellow)',red:'var(--red)'};
+    const rows=accts.map(a=>{
+      const last=getLastContact(a.id);const days=last?daysSince(last):null;
+      const tier=TIERS.find(t=>t.name===tierMap[a.id]);
+      return`<div class="int-row ${cls}" onclick="openModal('${a.id}')">
+        <div style="flex:1;min-width:0"><div class="int-name">${esc(a.name)}</div>
+        <div class="int-sub">${esc(a.contacts?.[0]?.title||'')}${a.city?` · ${esc(a.city)}`:''}${tier?` · ${tier.short}`:''}</div></div>
+        <div class="int-date"><div class="int-days" style="color:${colors[cls]}">${days!==null?`${days}d ago`:'Never'}</div>
+        <div class="int-lbl">${last||'No contact'}</div></div></div>`;
+    }).join('');
+    return`<div class="tl-section"><div class="tl-header ${cls}">${emoji} ${label}<span class="tl-cnt">${accts.length}</span></div>${rows}</div>`;
+  }
+  document.getElementById('view-interactions').innerHTML=`
+    <div class="vh"><div class="vt">🚦 Interaction Status</div><div class="vs">🟢 ≤60d · 🟡 61–180d · 🔴 &gt;1yr or never</div></div>
+    ${section('green','🟢','Active — within 60 days',groups.green)}
+    ${section('yellow','🟡','Cooling — 61–180 days ago',groups.yellow)}
+    ${section('red','🔴','Cold — over 1 year or never',groups.red)}`;
+}
+function renderQueue(){
+  const classified=ACCOUNTS.filter(a=>tierMap[a.id]).sort((a,b)=>{
+    const ra=TIERS.find(t=>t.name===tierMap[a.id])?.rank||99;
+    const rb=TIERS.find(t=>t.name===tierMap[b.id])?.rank||99;
+    if(ra!==rb)return ra-rb;
+    return(uInfo(b)?.pct||0)-(uInfo(a)?.pct||0);
+  });
+  let html=`<div class="vh"><div class="vt">Queue</div><div class="vs">Ordered by urgency within tier</div></div>`;
+  TIERS.forEach(tier=>{
+    const accts=classified.filter(a=>tierMap[a.id]===tier.name);
+    if(!accts.length)return;
+    html+=`<div class="qsec"><div class="qsh"><span style="width:7px;height:7px;border-radius:50%;background:${tier.color};display:inline-block"></span><span class="qst" style="color:${tier.color}">${tier.name}</span><span class="qcad">· every ${tier.cadence} days</span></div>`;
+    accts.forEach((a,i)=>{
+      const ui=uInfo(a);const last=getLastContact(a.id);
+      html+=`<div class="qrow${ui?.overdue?' ov':''}" onclick="openModal('${a.id}')">
+        <div class="qrank">${i+1}</div>
+        <div style="flex:1;min-width:0"><div class="qname">${esc(a.name)}</div>${a.contacts?.[0]?.title?`<div class="qtit">${esc(a.contacts[0].title)}</div>`:''}</div>
+        <div class="qstat"><div class="qurg" style="color:${ui?.overdue?'#C0392B':tier.color}">${ui?.label||'Never contacted'}</div>${last?`<div class="qlast">Last: ${last}</div>`:''}</div></div>`;
+    });
+    html+=`</div>`;
+  });
+  document.getElementById('view-queue').innerHTML=html;
+}
+function renderSetup(){
+  const un=ACCOUNTS.length-ACCOUNTS.filter(a=>tierMap[a.id]).length;
+  let html=`<div class="vh"><div class="vt">Setup</div><div class="vs">${un>0?`<span style="color:var(--red);font-weight:700">${un} unassigned</span>`:`<span style="color:var(--green);font-weight:700">All classified ✓</span>`}</div></div>`;
+  ACCOUNTS.forEach(a=>{
+    const cur=tierMap[a.id]||'';const tier=TIERS.find(t=>t.name===cur);
+    const opts=`<option value="">— Unassigned —</option>`+TIERS.map(t=>`<option value="${t.name}"${cur===t.name?' selected':''}>${t.short} · ${t.name}</option>`).join('');
+    html+=`<div class="srow"><div style="flex:1;min-width:0"><div class="sname">${esc(a.name)}</div>${a.city?`<div class="scity">${esc(a.city)}</div>`:''}</div>
+      <select class="tsel" style="color:${tier?.color||'#6B8A96'};font-weight:${tier?600:400}" onchange="assignTier('${a.id}',this.value)">${opts}</select></div>`;
+  });
+  document.getElementById('view-setup').innerHTML=html;
+}
+function renderHistory(){
+  const mc=logs.filter(l=>l.fromMonday).length;
+  const uc=logs.filter(l=>!l.fromMonday).length;
+  let html=`<div class="vh"><div class="vt">History</div><div class="vs">${logs.length} total · ${mc} Monday.com · ${uc} manual</div></div>`;
+  if(!logs.length){html+=`<div class="empty"><div class="et">No interactions yet</div></div>`;}
+  logs.forEach(l=>{
+    const isKW = l.loggedBy && l.loggedBy.includes('Kevin');
+    const isLJ = l.loggedBy && l.loggedBy.includes('Lee');
+    const byTag = l.loggedBy ? `<span style="font-size:8px;background:${isKW?'rgba(83,182,178,0.15)':'rgba(0,58,93,0.1)'};color:${isKW?'var(--teal)':'var(--navy)'};padding:1px 6px;border-radius:3px;font-family:'Josefin Sans',sans-serif;font-weight:700;letter-spacing:.04em;margin-top:3px;display:inline-block">${isKW?'KW':'LJ'}</span>` : '';
+    html+=`<div class="hist-item"><div class="hist-meta"><div class="hist-date">${fmt(l.date)}</div><div class="hist-badge${l.fromMonday?' m':''}">${l.fromMonday?'Monday':l.type||'Manual'}</div>${byTag}</div>
+      <div style="flex:1;min-width:0"><div class="hist-acct">${esc(l.accountName)}</div><div class="hist-notes">${esc(l.notes)}</div></div></div>`;
+  });
+  document.getElementById('view-history').innerHTML=html;
+}
+
+// ── NAV ───────────────────────────────────────────────────────────────────────
+function showView(v){
+  currentView=v; currentSearch='';
+  document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));
+  document.getElementById('view-'+v).classList.add('active');
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+  document.querySelector(`.nb[data-view="${v}"]`)?.classList.add('on');
+  const stripes={revenue:'#53B6B2',load:'#C9A153',political:'#003A5D',interactions:'linear-gradient(90deg,#0E7C5B,#D4A017 50%,#C0392B)',queue:'var(--lteal)',setup:'var(--border)',history:'var(--border)'};
+  document.getElementById('nav-stripe').style.background=stripes[v]||'var(--lteal)';
+  if(v==='revenue')renderRevenue();
+  else if(v==='load')renderLoad();
+  else if(v==='political')renderPolitical();
+  else if(v==='interactions')renderInteractions();
+  else if(v==='queue')renderQueue();
+  else if(v==='setup')renderSetup();
+  else if(v==='history')renderHistory();
+  renderStats();
+}
+function assignTier(id,val){
+  if(val)tierMap[id]=val; else delete tierMap[id];
+  saveTiers(); renderStats();
+}
+
+// ── MODAL ─────────────────────────────────────────────────────────────────────
+function openModal(id){
+  modalAcct=ACCOUNTS.find(a=>a.id===id);
+  modalSelContact=0; modalSelPin=0; modalEditEnergy=false;
+  renderModal();
+  document.getElementById('modal').style.display='flex';
+}
+function closeModal(){ document.getElementById('modal').style.display='none'; modalAcct=null; }
+
+function renderModal(){
+  const acct=modalAcct; if(!acct)return;
+  const tier=TIERS.find(t=>t.name===tierMap[acct.id]);
+  const alogs=getAccountLogs(acct.id);
+  const energy=energyData[acct.id]||{};
+  const progs=progData[acct.id]||{};
+  const hist=(histIntel[acct.id]||[]).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const last=getLastContact(acct.id);
+  const days=last?daysSince(last):null;
+  const ui=uInfo(acct);
+  const tlc=tlClass(acct);
+  const tlCol={green:'var(--green)',yellow:'var(--yellow)',red:'var(--red)'}[tlc];
+  const tlLbl={green:'🟢 Active',yellow:'🟡 Cooling',red:'🔴 Cold'}[tlc];
+  const ds=DISTRICT_STYLE[acct.district];
+  const multiLocs=MULTI_LOCATIONS[acct.id];
+  const contacts=acct.contacts||[];
+  const sel=contacts[modalSelContact]||contacts[0]||null;
+  const mapLink=mapsUrl(acct.address,acct.city,acct.zip);
+
+  // Contact section
+  let contactHtml='';
+  if(ds||acct.address){
+    contactHtml+=`<div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:10px;flex-wrap:wrap">`;
+    if(ds) contactHtml+=`<div style="display:inline-flex;align-items:center;gap:5px;background:${ds.bg};border:1.5px solid ${ds.color}33;border-radius:5px;padding:5px 9px;flex-shrink:0"><span style="font-size:14px">📍</span><div><div style="font-size:8px;color:${ds.color};font-family:'Josefin Sans',sans-serif;font-weight:700;letter-spacing:.08em;text-transform:uppercase">BEMC District</div><div style="font-size:12px;color:${ds.color};font-family:'Josefin Sans',sans-serif;font-weight:700">${esc(acct.district)}</div></div></div>`;
+    if(acct.address&&acct.city&&!multiLocs) contactHtml+=`<div style="flex:1;min-width:0"><div style="font-size:9px;color:var(--mut);font-family:'Josefin Sans',sans-serif;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px">Address</div><div style="font-size:11px;color:var(--txt2);line-height:1.4">${esc(acct.address)}, ${esc(acct.city)} ${esc(acct.zip)}</div></div>`;
+    contactHtml+=`</div>`;
+  }
+
+  // Multi-location chips
+  if(multiLocs){
+    const pin=multiLocs[modalSelPin];
+    const pinQ=encodeURIComponent(pin.address);
+    const allQ=multiLocs.map(l=>encodeURIComponent(l.address)).join('/');
+    const chips=multiLocs.map((loc,i)=>`<button onclick="modalSelPin=${i};renderModal()" style="background:${i===modalSelPin?'var(--navy)':'var(--white)'};color:${i===modalSelPin?'#fff':'var(--txt2)'};border:1.5px solid ${i===modalSelPin?'var(--navy)':'var(--border)'};border-radius:20px;padding:4px 10px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:9px;white-space:nowrap">${i===modalSelPin?'📍 ':''}${esc(loc.name)}</button>`).join('');
+    contactHtml+=`<div style="margin-bottom:10px">
+      <div style="font-size:9px;color:var(--mut);font-family:'Josefin Sans',sans-serif;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px">${multiLocs.length} Locations — Select to view</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">${chips}</div>
+      <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:7px;padding:11px 13px;display:flex;align-items:center;gap:11px">
+        <div style="font-size:28px;flex-shrink:0">🗺</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:11px;color:var(--navy);margin-bottom:2px">${esc(pin.name)}</div>
+          <div style="font-size:11px;color:var(--txt2);margin-bottom:6px">${esc(pin.address)}</div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a href="https://www.google.com/maps/search/?api=1&query=${pinQ}" target="_blank" style="font-size:10px;color:var(--teal);font-weight:600;text-decoration:none">🗺 This location</a>
+            <a href="https://www.google.com/maps/dir/${allQ}" target="_blank" style="font-size:10px;color:var(--navy);font-weight:600;text-decoration:none">📍 All ${multiLocs.length} locations</a>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  } else if(mapLink){
+    contactHtml+=`<div style="background:var(--bg);border:1.5px solid var(--border);border-radius:7px;padding:11px 13px;margin-bottom:10px;display:flex;align-items:center;gap:11px">
+      <div style="font-size:28px;flex-shrink:0">🗺</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:11px;color:var(--navy);margin-bottom:2px">${esc(acct.name)}</div>
+        <div style="font-size:11px;color:var(--txt2);line-height:1.4;margin-bottom:6px">${esc(acct.address)}, ${esc(acct.city)} ${esc(acct.zip)}</div>
+        <a href="${mapLink}" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--navy);color:#fff;padding:5px 12px;border-radius:4px;font-size:10px;font-family:'Josefin Sans',sans-serif;font-weight:700;letter-spacing:.07em;text-transform:uppercase;text-decoration:none">Open in Google Maps ↗</a>
+      </div>
+    </div>`;
+  }
+
+  // Contact dropdown
+  if(contacts.length>1){
+    const opts=contacts.map((c,i)=>`<option value="${i}"${i===modalSelContact?' selected':''}>${esc(c.name)}${c.title?` — ${esc(c.title)}`:''}</option>`).join('');
+    contactHtml+=`<div style="margin-bottom:8px"><label class="fl">Select Contact</label><select class="fi" style="margin-bottom:0" onchange="modalSelContact=Number(this.value);renderModal()">${opts}</select></div>`;
+  }
+  if(sel){
+    contactHtml+=`<div style="background:var(--white);border:1.5px solid var(--border);border-radius:6px;padding:9px 11px">
+      <div style="font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:12px;color:var(--navy);margin-bottom:2px">${esc(sel.name)}</div>
+      ${sel.title?`<div style="font-size:10px;color:var(--teal);font-weight:600;margin-bottom:6px">${esc(sel.title)}</div>`:''}
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        ${sel.phone?`<a href="tel:${esc(sel.phone)}" class="clink">📞 ${esc(sel.phone)}</a>`:''}
+        ${sel.email?`<a href="mailto:${esc(sel.email)}" class="clink">✉ ${esc(sel.email)}</a>`:''}
+      </div>
+    </div>`;
+  }
+  if(last) contactHtml+=`<div style="font-size:10px;color:${ui?.overdue?'var(--red)':'var(--mut)'};margin-top:8px;font-family:'Josefin Sans',sans-serif;font-weight:600">Last contact: ${fmt(last)} · ${ui?.label||''}</div>`;
+  else contactHtml+=`<div style="font-size:10px;color:var(--red);margin-top:8px;font-family:'Josefin Sans',sans-serif;font-weight:600">Never contacted</div>`;
+
+  // Energy tiles + 5-year chart
+  const mock = (typeof ENERGY_MOCK !== 'undefined' && ENERGY_MOCK[acct.id]) || {};
+  const energyFields=[{key:'demand',label:'Avg YTD Demand',unit:'kW'},{key:'kwh',label:'Avg Monthly kWh',unit:'kWh'},{key:'bill',label:'Avg Monthly Bill',unit:'$',prefix:true},{key:'rate',label:'Rate Class',unit:''}];
+  const energyHtml=energyFields.map(({key,label,unit,prefix})=>{
+    const val = energy[key] || mock[key] || '';
+    const isMock = !energy[key] && mock[key];
+    return`<div class="energy-tile">
+      <div class="energy-label">${label}${isMock?` <span style="font-size:7px;color:var(--dim);font-style:italic">est.</span>`:''}
+      </div>
+      ${modalEditEnergy
+        ?`<input class="fi" style="margin:0;padding:3px 6px;font-size:12px" placeholder="${key==='rate'?'e.g. GS-TOU':'Enter value'}" value="${esc(val)}" onblur="setEnergy('${acct.id}','${key}',this.value)">`
+        :val?`<div class="energy-val" style="${isMock?'opacity:.65':''}">${prefix?'$':''}${esc(val)}<span class="energy-unit">${prefix?'':unit}</span></div>`
+        :`<div class="energy-val empty">— ${unit}</div>`}
+    </div>`;
+  }).join('');
+
+  // 5-year kWh chart
+  const chartYears = ['2020','2021','2022','2023','2024'];
+  const storedY = energy.y || {};
+  const mockY = mock.y || {};
+  const yVals = chartYears.map(yr => Number(storedY[yr] || mockY[yr] || 0));
+  const maxY = Math.max(...yVals, 1);
+  const barW = 38, gap = 8, chartH = 80, labelH = 18;
+  const totalW = chartYears.length * (barW + gap) - gap;
+  const isMockChart = !energy.y && mock.y;
+  const chartBars = chartYears.map((yr, i) => {
+    const v = yVals[i];
+    const bh = v > 0 ? Math.max(4, Math.round((v / maxY) * chartH)) : 3;
+    const by = chartH - bh;
+    const tier = TIERS.find(t=>t.name===tierMap[acct.id]);
+    const col = tier?.color || '#017381';
+    const label = v > 0 ? (v >= 1000000 ? (v/1000000).toFixed(1)+'M' : (v/1000).toFixed(0)+'K') : '—';
+    return `<g>
+      <rect x="${i*(barW+gap)}" y="${by}" width="${barW}" height="${bh}" rx="3" fill="${col}" opacity="${isMockChart?0.55:0.85}"/>
+      <text x="${i*(barW+gap)+barW/2}" y="${chartH+12}" text-anchor="middle" font-size="9" fill="#6B8A96" font-family="Josefin Sans,sans-serif">${yr}</text>
+      <text x="${i*(barW+gap)+barW/2}" y="${by-3}" text-anchor="middle" font-size="8" fill="${col}" font-family="Josefin Sans,sans-serif" font-weight="700">${label}</text>
+    </g>`;
+  }).join('');
+
+  const trend = yVals[4] > 0 && yVals[0] > 0 ? (((yVals[4]-yVals[0])/yVals[0])*100).toFixed(1) : null;
+  const trendStr = trend !== null ? `${trend > 0 ? '▲' : '▼'} ${Math.abs(trend)}% since 2020` : '';
+  const trendCol = trend > 0 ? 'var(--red)' : 'var(--green)';
+
+  const chartHtml = `
+    <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <div style="font-size:9px;color:var(--mut);font-family:'Josefin Sans',sans-serif;font-weight:700;letter-spacing:.08em;text-transform:uppercase">5-Year kWh History${isMockChart?' <span style="font-size:7px;font-style:italic;opacity:.7">estimated</span>':''}</div>
+        ${trend!==null?`<div style="font-size:9px;font-family:'Josefin Sans',sans-serif;font-weight:700;color:${trendCol}">${trendStr}</div>`:''}
+      </div>
+      <svg viewBox="0 0 ${totalW} ${chartH+labelH}" width="100%" style="overflow:visible">
+        ${chartBars}
       </svg>
-      <div>
-        <div class="logo-title">Key Accounts</div>
-        <div class="logo-org">Baldwin EMC · External Affairs</div>
+      ${modalEditEnergy?`<div style="margin-top:8px"><div style="font-size:8px;color:var(--mut);font-family:'Josefin Sans',sans-serif;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">Annual kWh (edit)</div><div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px">${chartYears.map(yr=>`<div><label class="fl" style="margin-bottom:2px">${yr}</label><input class="fi" style="margin:0;padding:3px 5px;font-size:10px;text-align:center" value="${esc(String(storedY[yr]||mockY[yr]||''))}" onblur="setEnergyYear('${acct.id}','${yr}',this.value)" placeholder="kWh"></div>`).join('')}</div></div>`:''}
+    </div>`;
+
+  // Sponsorship & Support
+  const sponsors = (sponsorData[acct.id] || []).sort((a,b)=>b.year-a.year);
+  const SPON_CATS = ["Golf Tournament","Charity Sponsorship","Community Service","Event Sponsorship","In-Kind Support","Monetary Donation","Other"];
+  const SPON_ICONS = {"Golf Tournament":"⛳","Charity Sponsorship":"🎗️","Community Service":"🤲","Event Sponsorship":"🎪","In-Kind Support":"📦","Monetary Donation":"💵","Other":"🌟"};
+  const SPON_COLORS = {"Golf Tournament":"#1a7a3c","Charity Sponsorship":"#8B1A6B","Community Service":"#017381","Event Sponsorship":"#C9780C","In-Kind Support":"#2E7D9A","Monetary Donation":"#003A5D","Other":"#6B8A96"};
+  const sponCatOpts = SPON_CATS.map(c=>`<option value="${c}">${SPON_ICONS[c]} ${c}</option>`).join('');
+  const sponEntries = sponsors.length ? sponsors.map(s=>`
+    <div style="background:var(--white);border:1.5px solid var(--border);border-left:3px solid ${SPON_COLORS[s.category]||'var(--mut)'};border-radius:5px;padding:9px 11px;margin-bottom:5px">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px;flex-wrap:wrap">
+        <span style="font-size:9px;background:${SPON_COLORS[s.category]||'var(--mut)'};color:#fff;padding:2px 7px;border-radius:10px;font-family:'Josefin Sans',sans-serif;font-weight:700;letter-spacing:.05em;text-transform:uppercase">${SPON_ICONS[s.category]||'🌟'} ${esc(s.category)}</span>
+        <span style="font-size:11px;font-family:'Josefin Sans',sans-serif;font-weight:700;color:var(--navy)">${s.year}</span>
+        ${s.amount?`<span style="font-size:10px;color:var(--green);font-weight:600;font-family:'Josefin Sans',sans-serif">$${esc(s.amount)}</span>`:''}
+        <span style="font-size:9px;color:var(--dim);cursor:pointer;margin-left:auto" onclick="deleteSponsor('${acct.id}','${s.id}')">✕</span>
+      </div>
+      <div style="font-size:11px;color:var(--txt2);line-height:1.6">${esc(s.description)}</div>
+    </div>`) .join('')
+    : `<div style="background:var(--bg);border:1.5px dashed var(--border);border-radius:6px;padding:14px;text-align:center"><div style="font-size:22px;margin-bottom:5px">🤝</div><div style="font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:12px;color:var(--mut);margin-bottom:4px">No sponsorships recorded yet</div><div style="font-size:10px;color:var(--dim);line-height:1.6">Document golf tournaments, charity sponsorships, community service projects, and other support Baldwin EMC has provided.</div></div>`;
+
+  // Programs
+  const progsHtml=PROGRAMS.map(p=>{
+    const active=!!(progs[p.id]);
+    return`<div class="prog-tile${active?' active':''}" onclick="toggleProg('${acct.id}','${p.id}')">
+      <div class="prog-icon">${p.icon}</div>
+      <div style="flex:1;min-width:0"><div class="prog-name">${esc(p.label)}</div>
+      <div class="prog-status ${active?'on':'off'}">${active?'ENROLLED':'NOT ENROLLED'}</div></div>
+    </div>`;
+  }).join('');
+
+  // Interaction history
+  const histLogHtml=alogs.length?`<div class="section"><div class="sec-title">Interaction History</div>${
+    alogs.slice(0,8).map(l=>{
+      const byTag = l.loggedBy ? `<span style="font-size:8px;background:${l.loggedBy.includes('Kevin')?'rgba(83,182,178,0.15)':'rgba(0,58,93,0.1)'};color:${l.loggedBy.includes('Kevin')?'var(--teal)':'var(--navy)'};padding:1px 6px;border-radius:3px;font-family:'Josefin Sans',sans-serif;font-weight:700;letter-spacing:.04em;white-space:nowrap">${l.loggedBy.includes('Kevin')?'KW':'LJ'}</span>` : '';
+      return`<div class="hist-item"><div class="hist-meta"><div class="hist-date">${fmt(l.date)}</div><div class="hist-badge${l.fromMonday?' m':''}">${l.fromMonday?'Monday':l.type||'Manual'}</div>${byTag}</div><div style="flex:1;min-width:0;font-size:11px;color:var(--txt2);line-height:1.5">${esc(l.notes)}</div></div>`;
+    }).join('')
+  }</div>`:'';
+
+  // Historical intelligence
+  const CATS=["General","Past Issue","Expansion","Way We Helped","Rate History","Key Contact Note","Political Context","Other"];
+  const catOpts=CATS.map(c=>`<option value="${c}">${CAT_ICONS[c]||'📝'} ${c}</option>`).join('');
+  const histEntries=hist.length?hist.map(e=>`
+    <div style="background:var(--white);border:1.5px solid var(--border);border-left:3px solid ${CAT_COLORS[e.category]||'var(--mut)'};border-radius:5px;padding:9px 11px;margin-bottom:5px">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:5px;flex-wrap:wrap">
+        <span style="font-size:9px;background:${CAT_COLORS[e.category]||'var(--mut)'};color:#fff;padding:2px 7px;border-radius:10px;font-family:'Josefin Sans',sans-serif;font-weight:700;letter-spacing:.06em;text-transform:uppercase">${CAT_ICONS[e.category]||''} ${esc(e.category)}</span>
+        <span style="font-size:10px;color:var(--mut);font-family:'Josefin Sans',sans-serif;font-weight:600">${esc(e.author)}</span>
+        <span style="font-size:9px;color:var(--dim);margin-left:auto">${fmt(e.date)}</span>
+        <span style="font-size:9px;color:var(--dim);cursor:pointer" onclick="deleteIntel('${acct.id}','${e.id}')">✕</span>
+      </div>
+      <div style="font-size:11px;color:var(--txt2);line-height:1.6">${esc(e.text)}</div>
+    </div>`).join('')
+    :`<div style="background:var(--bg);border:1.5px dashed var(--border);border-radius:6px;padding:14px;text-align:center"><div style="font-size:22px;margin-bottom:5px">📚</div><div style="font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:12px;color:var(--mut);margin-bottom:4px">No historical intelligence yet</div><div style="font-size:10px;color:var(--dim);line-height:1.6">Work through this account with previous managers and team to capture institutional knowledge.</div></div>`;
+
+  document.getElementById('modal-body').innerHTML=`
+    <div class="section"><div class="sec-title">Contact</div>${contactHtml}</div>
+
+    <div class="section"><div class="sec-title">Log Interaction</div>
+      <div class="int-log-form">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:9px">
+          <div><label class="fl">Date</label><input type="date" id="log-date" class="fi" style="margin-bottom:0" value="${today()}"></div>
+          <div><label class="fl">Type</label><select id="log-type" class="fi" style="margin-bottom:0">${ITYPES.map(t=>`<option>${t}</option>`).join('')}</select></div>
+        </div>
+        <div style="margin-bottom:9px">
+          <label class="fl">Logged By</label>
+          <select id="log-by" class="fi" style="margin-bottom:0">
+            <option value="Lee Johnson">Lee Johnson — VP External Affairs</option>
+            <option value="Kevin Wilson">Kevin Wilson — Manager, Business Development & Metering</option>
+          </select>
+        </div>
+        <label class="fl">Notes</label>
+        <textarea id="log-notes" class="fi" placeholder="What was discussed, decided, or followed up on?"></textarea>
+        <button class="int-submit" id="log-submit" onclick="saveInteraction('${acct.id}')">💾 Save & Sync to Monday.com</button>
+        <div id="sync-result"></div>
       </div>
     </div>
-    <div class="topnav">
-      <button class="nb on" onclick="showView('dashboard')">Dashboard</button>
-      <button class="nb" onclick="showView('queue')">Queue</button>
-      <button class="nb" onclick="showView('setup')">Setup</button>
-      <button class="nb" onclick="showView('history')">History</button>
+
+    ${histLogHtml}
+
+    <div class="section"><div class="sec-title">Energy Snapshot</div>
+      <div class="energy-grid">${energyHtml}</div>
+      ${chartHtml}
+      <div style="text-align:right;margin-top:5px"><span style="font-size:10px;color:var(--teal);cursor:pointer;font-weight:600;font-family:'Josefin Sans',sans-serif" onclick="modalEditEnergy=!modalEditEnergy;renderModal()">${modalEditEnergy?'✓ Done editing':'✏ Edit data'}</span></div>
     </div>
-  </div>
 
-  <div class="statsbar">
-    <div class="stat" onclick="showView('dashboard')">
-      <div class="sv" id="stat-total">85</div>
-      <div class="sl">Accounts</div>
+    <div class="section"><div class="sec-title">Programs & Services</div><div class="programs-grid">${progsHtml}</div></div>
+
+    <div class="section"><div class="sec-title">Sponsorship & Support</div>
+      <div class="int-log-form" style="margin-bottom:10px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+          <div><label class="fl">Year</label><input id="spon-year" class="fi" style="margin-bottom:0" placeholder="${new Date().getFullYear()}" type="number" min="2000" max="2035" value="${new Date().getFullYear()}"></div>
+          <div><label class="fl">Category</label><select id="spon-cat" class="fi" style="margin-bottom:0">${sponCatOpts}</select></div>
+        </div>
+        <div style="margin-bottom:8px"><label class="fl">Amount (optional)</label><input id="spon-amount" class="fi" style="margin-bottom:0" placeholder="e.g. 500" type="text"></div>
+        <label class="fl">Description</label>
+        <textarea id="spon-desc" class="fi" style="min-height:65px" placeholder="Describe the sponsorship, event, or community support provided…"></textarea>
+        <button class="int-submit" style="background:#1a7a3c" onclick="addSponsor('${acct.id}')">🤝 Add Sponsorship Record</button>
+      </div>
+      ${sponEntries}
     </div>
-    <div class="stat" onclick="showView('dashboard')">
-      <div class="sv teal" id="stat-classified">0</div>
-      <div class="sl">Classified</div>
-    </div>
-    <div class="stat" onclick="showView('queue')">
-      <div class="sv teal" id="stat-overdue">0</div>
-      <div class="sl">Overdue</div>
-    </div>
-    <div class="stat" onclick="showView('history')">
-      <div class="sv teal" id="stat-interactions">0</div>
-      <div class="sl">Logged</div>
-    </div>
-    <div class="stat" onclick="showView('setup')">
-      <div class="sv red" id="stat-unassigned">85</div>
-      <div class="sl">Unassigned</div>
-    </div>
-  </div>
-  <div class="stripe"></div>
 
-  <div class="main">
-    <div id="view-dashboard" class="view active"></div>
-    <div id="view-queue" class="view"></div>
-    <div id="view-setup" class="view"></div>
-    <div id="view-history" class="view"></div>
-  </div>
-</div>
+    <div class="section"><div class="sec-title">Historical Intelligence</div>
+      <div class="int-log-form" style="margin-bottom:10px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+          <div><label class="fl">Your Name</label><input id="intel-author" class="fi" style="margin-bottom:0" placeholder="e.g. Lee Johnson"></div>
+          <div><label class="fl">Category</label><select id="intel-cat" class="fi" style="margin-bottom:0">${catOpts}</select></div>
+        </div>
+        <label class="fl">Intelligence Entry</label>
+        <textarea id="intel-text" class="fi" style="min-height:80px" placeholder="Past issues, expansions, ways we helped, key relationship context, rate history, political dynamics…"></textarea>
+        <button class="int-submit" style="background:var(--navy)" onclick="addIntel('${acct.id}')">📚 Add to Historical Intelligence</button>
+      </div>
+      ${histEntries}
+    </div>`;
 
-<!-- LOG MODAL -->
-<div class="overlay" id="modal" style="display:none" onclick="if(event.target===this)closeModal()">
-  <div class="modal" onclick="event.stopPropagation()">
-    <div class="mt">Log Interaction</div>
-    <div class="ms" id="modal-acct-name"></div>
-    <label class="fl">Date</label>
-    <input type="date" class="fi" id="log-date">
-    <label class="fl">Interaction Type</label>
-    <select class="fi" id="log-type">
-      <option>Meeting</option><option>Phone Call</option><option>Email</option>
-      <option>Site Visit</option><option>Event</option><option>Other</option>
-    </select>
-    <label class="fl">Notes</label>
-    <textarea class="fi" id="log-notes" placeholder="What was discussed or accomplished?"></textarea>
-    <div class="macts">
-      <button class="mcancel" onclick="closeModal()">Cancel</button>
-      <button class="msave" onclick="saveLog()">Save</button>
-    </div>
-  </div>
-</div>
-
-<script>
-const ACCOUNTS = [
-  {id:"11261102239",name:"The Wharf",contactTitle:"",phone:"251-224-1000",email:"jimb@alwharf.com",city:"Orange Beach"},
-  {id:"11459736243",name:"Baldwin County Board of Education",contactTitle:"Superintendent",phone:"251-937-0308",email:"etyler@bcbe.org",city:"Bay Minette"},
-  {id:"11459710593",name:"Wal-Mart Stores East LP",contactTitle:"Market Manager",phone:"251-943-3400",email:"brian.thomas@walmart.com",city:""},
-  {id:"11459717902",name:"Publix Alabama LLC",contactTitle:"District Manager",phone:"800-242-1227",email:"james.mowery@publix.com",city:""},
-  {id:"11459754437",name:"Aldi, Inc.",contactTitle:"",phone:"",email:"heather.moore@aldi.us",city:"Loxley"},
-  {id:"11459715320",name:"Phoenix West II Owners Association",contactTitle:"Property Manager",phone:"251-948-1929",email:"billb@brettrobinson.com",city:"Miramar Beach"},
-  {id:"11459718173",name:"Turquoise Place Condominium Association",contactTitle:"Principal",phone:"251-224-2774",email:"tonymarzullo@beachclubal.com",city:""},
-  {id:"11459728849",name:"Phoenix West Owners Association Inc.",contactTitle:"Property Manager",phone:"251-948-1929",email:"billb@brettrobinson.com",city:"Gulf Shores"},
-  {id:"11459771970",name:"City of Orange Beach",contactTitle:"Mayor",phone:"",email:"tkennon@cityoforangebeach.com",city:""},
-  {id:"11459732084",name:"Buc-ee's Alabama LLC",contactTitle:"Director",phone:"346-774-2218",email:"matthew.sheffield@buc-ees.com",city:"Lake Jackson"},
-  {id:"11459717229",name:"Rouse's Enterprises LLC",contactTitle:"General Manager",phone:"",email:"danielle.thomas@rouses.com",city:""},
-  {id:"11459727380",name:"Ace Hardware Corp",contactTitle:"Regional/Corporate Contact",phone:"+1 (601) 329-1545",email:"dtreh@acehardware.com",city:"Loxley"},
-  {id:"11459748889",name:"Gulf State Park",contactTitle:"",phone:"",email:"dkeyser@lodgegsp.com",city:"Gulf Shores"},
-  {id:"11459727234",name:"Viridi Magnolia LLC",contactTitle:"",phone:"",email:"",city:""},
-  {id:"11459747621",name:"City of Gulf Shores",contactTitle:"Mayor",phone:"251-968-1124",email:"mayor@gulfshoresal.gov",city:""},
-  {id:"11459748133",name:"Foley Holdings LLC",contactTitle:"General Manager",phone:"251-923-3571",email:"mneace@visitowa.com",city:"Foley"},
-  {id:"11459754737",name:"Phoenix Gulf Towers Owners Association",contactTitle:"Property Manager",phone:"251-948-1929",email:"billb@brettrobinson.com",city:""},
-  {id:"11459728413",name:"Paul Stewart",contactTitle:"",phone:"",email:"",city:""},
-  {id:"11459727483",name:"Perdido Hotel Partners LLC",contactTitle:"Managing Director",phone:"251-981-9811",email:"drichardson@perdidobeachresort.com",city:"Orange Beach"},
-  {id:"11459735417",name:"PHG WB Gulf Shores LLC",contactTitle:"",phone:"",email:"",city:""},
-  {id:"11459731848",name:"Tesla Inc.",contactTitle:"Regional Manager, Sales & Delivery",phone:"888-518-3752",email:"glevins@tesla.com",city:""},
-  {id:"11459746136",name:"Caribe Resort Condominium Association",contactTitle:"General Manager & Qualifying Broker",phone:"251-980-9020",email:"tonymarzullo@beachclubal.com",city:"Orange Beach"},
-  {id:"11459750272",name:"Orange Beach BOE",contactTitle:"Superintendent",phone:"251-424-1730",email:"rwilkes@orangebeachboe.org",city:"Orange Beach"},
-  {id:"11459714700",name:"Sinclair Media II Inc.",contactTitle:"",phone:"251-981-9811",email:"",city:""},
-  {id:"11459729933",name:"Cal-Maine Foods Inc.",contactTitle:"General Manager",phone:"251-946-2000",email:"christopherweaver@calmainefoods.com",city:""},
-  {id:"11459714775",name:"Phoenix Orange Beach Owners Association",contactTitle:"Property Manager",phone:"251-948-1929",email:"billb@brettrobinson.com",city:"Gulf Shores"},
-  {id:"11459711917",name:"Utilities Board - City of Gulf Shores",contactTitle:"Gulf Shores Utilities",phone:"(251) 331-3983",email:"jeffdeakins@bellsouth.net",city:"Gulf Shores"},
-  {id:"11459726400",name:"Brett Real Estate / Robinson Development Co.",contactTitle:"President & CEO",phone:"251-948-1929",email:"billb@brettrobinson.com",city:""},
-  {id:"11459765650",name:"Phoenix Orange Beach II Owners Association",contactTitle:"Property Manager",phone:"251-948-1929",email:"billb@brettrobinson.com",city:"Gulf Shores"},
-  {id:"11459730702",name:"Caribe Resort COA Phase II",contactTitle:"General Manager & Qualifying Broker",phone:"251-980-9020",email:"tonymarzullo@beachclubal.com",city:"Orange Beach"},
-  {id:"11459730430",name:"Target Corporation",contactTitle:"Store Director",phone:"251-971-5900",email:"paige.pope@target.com",city:""},
-  {id:"11459751104",name:"Novelis Corporation",contactTitle:"Plant Manager",phone:"",email:"tori.holt@novelis.adityabirla.com",city:"Bay Minette"},
-  {id:"11459729824",name:"Bon Secour Fisheries Inc.",contactTitle:"President",phone:"251-949-5052",email:"sjnelson@gulftel.com",city:"Bon Secour"},
-  {id:"11459726519",name:"Kaishan Compressor USA LLC",contactTitle:"President",phone:"251-257-0586",email:"kschumacher@kaishanusa.com",city:"Loxley"},
-  {id:"11459750492",name:"Cumulus Broadcasting LLC",contactTitle:"",phone:"251-540-5555",email:"",city:""},
-  {id:"11459730871",name:"Phoenix Gulf Shores Owners Association",contactTitle:"Property Manager",phone:"251-948-1929",email:"billb@brettrobinson.com",city:"Gulf Shores"},
-  {id:"11459745585",name:"Bella Luna Condo Owners Association",contactTitle:"On-Site Manager / HOA Contact",phone:"251-980-9XXX",email:"Teresa.badonsky@bellalunacondos.net",city:"Orange Beach"},
-  {id:"11459750160",name:"Deerfield Media (Mobile) Inc.",contactTitle:"",phone:"251-662-3002",email:"",city:""},
-  {id:"11459730706",name:"Columbia Southern University",contactTitle:"",phone:"251-979-2771",email:"ken.styron@columbiasouthern.edu",city:"Orange Beach"},
-  {id:"11459766293",name:"Island House Inc.",contactTitle:"",phone:"251-981-9000",email:"",city:""},
-  {id:"11459749244",name:"Phoenix IX Owners Association Inc.",contactTitle:"Property Manager",phone:"251-948-1929",email:"billb@brettrobinson.com",city:"Gulf Shores"},
-  {id:"11459770403",name:"Lowe's Home Centers Inc. #577",contactTitle:"District Manager",phone:"251-943-3080",email:"",city:""},
-  {id:"11459749855",name:"BFG SRID Gulf Shores Propco IV LLC",contactTitle:"",phone:"",email:"",city:""},
-  {id:"11459750626",name:"Lighthouse Condo Association",contactTitle:"Senior Management",phone:"251-975-0350",email:"LighthouseCOA@gmail.com",city:"Gulf Shores"},
-  {id:"11459731071",name:"Lambert's Cafe III Inc.",contactTitle:"Owner",phone:"904-226-5821",email:"lamberts1@throwedrolls.com",city:"Foley"},
-  {id:"11459708879",name:"Coastal Orange Beach LLC",contactTitle:"",phone:"251-981-6900",email:"",city:""},
-  {id:"11459726722",name:"Phoenix VII Owners Association",contactTitle:"Property Manager",phone:"251-948-1929",email:"billb@brettrobinson.com",city:"Gulf Shores"},
-  {id:"11459726312",name:"Overseas Hardwoods Company",contactTitle:"President",phone:"251-330-7707",email:"leejr@ohc.net",city:"Mobile"},
-  {id:"11459750911",name:"Gulf Shores City Schools BOE",contactTitle:"Superintendent",phone:"251-968-9873",email:"makin@gsboe.org",city:"Gulf Shores"},
-  {id:"11459765643",name:"Phoenix VI Owners Association",contactTitle:"Property Manager",phone:"251-948-1929",email:"billb@brettrobinson.com",city:"Gulf Shores"},
-  {id:"11459747055",name:"Crystal Shores West Owners Association",contactTitle:"Property Manager",phone:"251-216-7100",email:"worden@coastlinemgmt.com",city:"Gulf Shores"},
-  {id:"11459785180",name:"Phoenix Gulf Shores II Owners Association",contactTitle:"Property Manager",phone:"251-948-1929",email:"billb@brettrobinson.com",city:"Gulf Shores"},
-  {id:"11459746371",name:"Hangout in Gulf Shores LLC",contactTitle:"Director of Operations",phone:"251-948-3030",email:"info@thehangout.com",city:"Gulf Shores"},
-  {id:"11459768298",name:"Solid Waste Disposal Authority",contactTitle:"",phone:"251-972-6878",email:"tgraham@baldwincountyswda.org",city:"Summerdale"},
-  {id:"11459767300",name:"Balmaquien Hospitality LLC",contactTitle:"Managing Director",phone:"251-981-9811",email:"drichardson@perdidobeachresort.com",city:"Gulf Breeze"},
-  {id:"11459751118",name:"Rock Point Village LLC",contactTitle:"Managing Director",phone:"251-981-9811",email:"drichardson@perdidobeachresort.com",city:"Gulf Breeze"},
-  {id:"11459749256",name:"PalletOne Inc.",contactTitle:"Buyer",phone:"251-405-3193",email:"j.wilson@palletone.com",city:""},
-  {id:"11459747035",name:"Escapes to the Shores Condo Association",contactTitle:"Property Manager",phone:"251-315-6853",email:"info@latourhotelsandresorts.com",city:"Orange Beach"},
-  {id:"11459784661",name:"A&R Properties & Rental LLC",contactTitle:"",phone:"251-948-2645",email:"",city:""},
-  {id:"11459745315",name:"AMC Theatres",contactTitle:"General Manager",phone:"251-948-4100",email:"",city:""},
-  {id:"11459783625",name:"Rabren General Contractors",contactTitle:"President & CEO",phone:"334-319-2282",email:"mattrabren@rabren.com",city:"Auburn"},
-  {id:"11459745251",name:"Phoenix V Association Inc.",contactTitle:"HOA President",phone:"817-821-0736",email:"markescuebod@yahoo.com",city:"Orange Beach"},
-  {id:"11459734603",name:"Baldwin Co. EMC",contactTitle:"CEO",phone:"251-989-6247",email:"hrobinson@baldwinemc.com",city:"Summerdale"},
-  {id:"11459734505",name:"City of Fairhope",contactTitle:"Mayor",phone:"251-990-0100",email:"sherry.sullivan@fairhopeal.gov",city:""},
-  {id:"11459770194",name:"LV Petroleum LLC",contactTitle:"",phone:"",email:"",city:""},
-  {id:"11459771099",name:"Orange Beach Water, Sewer and Fire",contactTitle:"General Manager",phone:"251-981-4233",email:"orangebeachwater@obwaterauthority.com",city:"Orange Beach"},
-  {id:"11459751524",name:"CRR Hospitality LLC",contactTitle:"Managing Director",phone:"251-981-9811",email:"drichardson@perdidobeachresort.com",city:"Gulf Breeze"},
-  {id:"11459752473",name:"Saunders Yachtworks LLC",contactTitle:"President",phone:"251-456-4507",email:"jfitzgerald@saundersyacht.com",city:"Gulf Shores"},
-  {id:"11459745750",name:"Home Depot USA Inc.",contactTitle:"District Manager, Services",phone:"",email:"matthew_merrick@homedepot.com",city:""},
-  {id:"11459784445",name:"Cotton Bayou Holdings LLC",contactTitle:"Director of Operations",phone:"251-948-3030",email:"info@thehangout.com",city:"Gulf Shores"},
-  {id:"11520563600",name:"PalletOne",contactTitle:"Contact: Jimmy Wilson",phone:"(251) 979-6742",email:"jimmywilson@bay-wood-products.com",city:"Robertsdale"},
-  {id:"11520881002",name:"Gulf Shores International Airport",contactTitle:"",phone:"251-967-3968",email:"jFosnaugh@flyjka.com",city:"Gulf Shores"},
-  {id:"11520971375",name:"68 Ventures",contactTitle:"Director of Communications & Talent",phone:"251-423-9242",email:"kgarrett@68ventures.com",city:"Daphne"},
-  {id:"11520977249",name:"Amazon",contactTitle:"Economic Development Manager",phone:"901-412-8771",email:"masdebor@amazon.com",city:""},
-  {id:"11521105827",name:"Butting",contactTitle:"USA CEO & Managing Director",phone:"251-510-8806",email:"adrian.rochofski@butting.com",city:"Spanish Fort"},
-  {id:"11521115806",name:"Alabama Beaches",contactTitle:"",phone:"251-974-4620",email:"bgendler@alabamabeaches.com",city:"Gulf Shores"},
-  {id:"11521102309",name:"D.R. Horton",contactTitle:"",phone:"251-447-0329",email:"sdwhitehurst@drhorton.com",city:"Daphne"},
-  {id:"11521123362",name:"North Baldwin Infirmary",contactTitle:"President",phone:"",email:"kenny.breal@infirmaryhealth.org",city:"Bay Minette"},
-  {id:"11521133306",name:"KeyPort Warehousing",contactTitle:"",phone:"",email:"gary.unger@keyportwarehousing.com",city:"Loxley"},
-  {id:"11521132973",name:"Mingledorff's",contactTitle:"",phone:"",email:"rcenter@mingledorffs.com",city:"Loxley"},
-  {id:"11521119991",name:"Imperial Dade",contactTitle:"",phone:"",email:"chuey@imperialdade.com",city:"Loxley"},
-  {id:"11521120007",name:"Baldwin Health",contactTitle:"CEO",phone:"251-949-3400",email:"margaret_roley@baldwinhealth.com",city:"Foley"},
-  {id:"11521119097",name:"Baldwin County Commission Satellite Courthouses",contactTitle:"County Administrator",phone:"",email:"roger.rendleman@baldwincountyal.gov",city:"Bay Minette"},
-  {id:"11521132889",name:"Coastal Alabama Community College",contactTitle:"Dean, Workforce Development & Adult Education",phone:"251-250-9595",email:"joshua.duplantis@coastalalabama.edu",city:"Bay Minette"},
-  {id:"11530215257",name:"Baldwin County Commission",contactTitle:"County Administrator",phone:"",email:"roger.rendleman@baldwincountyal.gov",city:"Bay Minette"},
-];
-
-const TIERS = [
-  {name:"Political / Government",rank:1,color:"#003A5D",dim:"rgba(0,58,93,0.09)",cadence:180,short:"POL"},
-  {name:"Large Revenue",rank:2,color:"#017381",dim:"rgba(1,115,129,0.09)",cadence:180,short:"REV"},
-  {name:"Large Load",rank:3,color:"#53B6B2",dim:"rgba(83,182,178,0.12)",cadence:270,short:"LOD"},
-  {name:"Strategic Partner",rank:4,color:"#2E7D9A",dim:"rgba(46,125,154,0.09)",cadence:365,short:"STR"},
-  {name:"Community Anchor",rank:5,color:"#6B9EAC",dim:"rgba(107,158,172,0.1)",cadence:365,short:"COM"},
-];
-
-let tierMap = {};
-let logs = [];
-let activeTier = "all";
-let search = "";
-let expanded = null;
-let logModal = null;
-let currentView = "dashboard";
-
-try { tierMap = JSON.parse(localStorage.getItem("ka_tiers") || "{}"); } catch(e) {}
-try { logs = JSON.parse(localStorage.getItem("ka_logs") || "[]"); } catch(e) {}
-
-function save() {
-  try { localStorage.setItem("ka_tiers", JSON.stringify(tierMap)); } catch(e) {}
-  try { localStorage.setItem("ka_logs", JSON.stringify(logs)); } catch(e) {}
+  // Header badges
+  const tierBadge=tier?`<div class="mbadge" style="color:${tier.color};border-color:${tier.color}40;background:${tier.dim}">T${tier.rank} · ${tier.short}</div>`:'';
+  document.getElementById('modal-header-name').textContent=acct.name;
+  document.getElementById('modal-header-city').textContent=acct.city||'';
+  document.getElementById('modal-header-badges').innerHTML=`${tierBadge}<div class="mbadge" style="color:${tlCol};border-color:${tlCol}40;background:${tlc==='green'?'var(--gdim)':tlc==='yellow'?'var(--ydim)':'var(--rdim)'}">${tlLbl}</div>`;
 }
 
-function today() { return new Date().toISOString().split("T")[0]; }
-
-function daysSince(d) {
-  if (!d) return null;
-  return Math.floor((Date.now() - new Date(d)) / 86400000);
+async function saveInteraction(accountId){
+  const notes=document.getElementById('log-notes')?.value?.trim();
+  const date=document.getElementById('log-date')?.value||today();
+  const type=document.getElementById('log-type')?.value||'Meeting';
+  const loggedBy=document.getElementById('log-by')?.value||'Lee Johnson';
+  if(!notes)return;
+  const btn=document.getElementById('log-submit');
+  const res=document.getElementById('sync-result');
+  btn.disabled=true; btn.textContent='⏳ Syncing…';
+  const acct=ACCOUNTS.find(a=>a.id===accountId);
+  const newLog={id:Date.now().toString(),accountId,accountName:acct?.name||'',date,type,notes,loggedBy,fromMonday:false};
+  logs=[newLog,...logs]; saveLogs();
+  try{
+    await writeToMonday(accountId,date,type,notes,loggedBy);
+    res.innerHTML=`<div class="sync-ok">✓ Monday.com updated successfully</div>`;
+  }catch(e){
+    res.innerHTML=`<div class="sync-err">⚠ Saved locally. Monday.com sync failed: ${e.message}</div>`;
+  }
+  btn.disabled=false; btn.textContent='💾 Save & Sync to Monday.com';
+  if(document.getElementById('log-notes')) document.getElementById('log-notes').value='';
+  renderStats();
+  if(currentView==='interactions')renderInteractions();
+  if(currentView==='queue')renderQueue();
+  if(currentView==='history')renderHistory();
+  // Re-render just the history section inside the modal without full re-render
+  const alogs=getAccountLogs(accountId);
+  // full re-render modal to show new log in history
+  renderModal();
 }
 
-function getLastContact(id) {
-  const found = logs.filter(l => l.accountId === id).sort((a,b) => new Date(b.date) - new Date(a.date));
-  return found.length ? found[0].date : null;
+function setEnergy(id,field,val){
+  if(!energyData[id])energyData[id]={};
+  energyData[id][field]=val;
+  saveEnergy();
+}
+function setEnergyYear(id,year,val){
+  if(!energyData[id])energyData[id]={};
+  if(!energyData[id].y)energyData[id].y={};
+  energyData[id].y[year]=Number(val)||0;
+  saveEnergy();
+}
+function addSponsor(id){
+  const desc=document.getElementById('spon-desc')?.value?.trim();
+  const year=parseInt(document.getElementById('spon-year')?.value)||new Date().getFullYear();
+  const cat=document.getElementById('spon-cat')?.value||'Other';
+  const amount=document.getElementById('spon-amount')?.value?.trim();
+  if(!desc)return;
+  const entry={id:Date.now().toString(),year,category:cat,description:desc,amount:amount||''};
+  if(!sponsorData[id])sponsorData[id]=[];
+  sponsorData[id]=[entry,...sponsorData[id]];
+  saveSponsor(); renderModal();
+}
+function deleteSponsor(acctId,entryId){
+  if(!sponsorData[acctId])return;
+  sponsorData[acctId]=sponsorData[acctId].filter(e=>e.id!==entryId);
+  saveSponsor(); renderModal();
+}
+function toggleProg(id,progId){
+  if(!progData[id])progData[id]={};
+  progData[id][progId]=!progData[id][progId];
+  saveProgs(); renderModal();
+}
+function addIntel(id){
+  const text=document.getElementById('intel-text')?.value?.trim();
+  const author=document.getElementById('intel-author')?.value?.trim();
+  const cat=document.getElementById('intel-cat')?.value||'General';
+  if(!text||!author)return;
+  const entry={id:Date.now().toString(),date:today(),author,category:cat,text};
+  if(!histIntel[id])histIntel[id]=[];
+  histIntel[id]=[entry,...histIntel[id]];
+  saveHist(); renderModal();
+}
+function deleteIntel(acctId,entryId){
+  if(!histIntel[acctId])return;
+  histIntel[acctId]=histIntel[acctId].filter(e=>e.id!==entryId);
+  saveHist(); renderModal();
 }
 
-function getAccountLogs(id) {
-  return logs.filter(l => l.accountId === id).sort((a,b) => new Date(b.date) - new Date(a.date));
-}
+// ── INIT ──────────────────────────────────────────────────────────────────────
+// ── LIVE SYNC ON LOAD ─────────────────────────────────────────────────────────
+// NOTE: Sync only works when hosted (Netlify, web server, etc.)
+// Opening as a local file:// blocks browser fetch to external APIs (CORS).
+const IS_LOCAL = location.protocol === 'file:';
 
-function urgencyInfo(acct) {
-  const tier = TIERS.find(t => t.name === tierMap[acct.id]);
-  if (!tier) return null;
-  const last = getLastContact(acct.id);
-  if (!last) return {pct:100, overdue:true, label:"Never contacted", tier:tier};
-  const days = daysSince(last);
-  const pct = Math.min((days / tier.cadence) * 100, 100);
-  const overdue = days > tier.cadence;
-  const diff = Math.abs(days - tier.cadence);
-  return {days:days, pct:pct, overdue:overdue, label: overdue ? diff+"d overdue" : diff+"d remaining", tier:tier};
-}
+async function syncFromMonday() {
+  if (IS_LOCAL) return; // file:// can't reach Monday.com API — skip silently
 
-function ring(pct, overdue, color) {
-  const r = 13, c = 2 * Math.PI * r, dash = (pct/100) * c;
-  const col = overdue ? "#C0392B" : (color || "#017381");
-  const track = overdue ? "rgba(192,57,43,0.1)" : "rgba(0,58,93,0.07)";
-  return '<svg width="34" height="34" viewBox="0 0 34 34">' +
-    '<circle cx="17" cy="17" r="' + r + '" fill="none" stroke="' + track + '" stroke-width="2.5"/>' +
-    '<circle cx="17" cy="17" r="' + r + '" fill="none" stroke="' + col + '" stroke-width="2.5"' +
-    ' stroke-dasharray="' + dash.toFixed(2) + ' ' + c.toFixed(2) + '"' +
-    ' stroke-linecap="round" transform="rotate(-90 17 17)"/></svg>';
-}
+  const syncBanner = document.getElementById('sync-banner');
+  const syncDone = document.getElementById('sync-done');
+  if (syncBanner) syncBanner.style.display = 'flex';
+  if (syncDone) syncDone.style.display = 'none';
 
-function getSorted() {
-  return ACCOUNTS.filter(a => {
-    if (!tierMap[a.id]) return false;
-    if (activeTier !== "all" && tierMap[a.id] !== activeTier) return false;
-    if (search) {
-      const q = search.toLowerCase();
-      return a.name.toLowerCase().includes(q) || (a.city||"").toLowerCase().includes(q) || (a.contactTitle||"").toLowerCase().includes(q);
+  try {
+    const query = `{
+      boards(ids:[${BOARD_ID}]) {
+        items_page(limit:100, query_params:{rules:[{column_id:"date_mm0prnqq",compare_value:[],operator:is_not_empty}]}) {
+          items {
+            id
+            name
+            column_values(ids:["date_mm0prnqq","long_text_mm1jq6vw"]) {
+              id
+              text
+              ... on LongTextValue { text }
+            }
+          }
+        }
+      }
+    }`;
+    const res = await fetch('https://api.monday.com/v2', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','Authorization':TOKEN,'API-Version':'2024-01'},
+      body: JSON.stringify({query})
+    });
+    const data = await res.json();
+    const items = data?.data?.boards?.[0]?.items_page?.items || [];
+    const savedIds = new Set(logs.map(l => l.id));
+    let added = 0;
+
+    items.forEach(item => {
+      const dateCol = item.column_values?.find(c => c.id === 'date_mm0prnqq');
+      const notesCol = item.column_values?.find(c => c.id === 'long_text_mm1jq6vw');
+      const date = dateCol?.text;
+      const rawText = notesCol?.text || '';
+      if (!date) return;
+
+      const entryPattern = /\[([^\]]+)\]\s+(\d{4}-\d{2}-\d{2})\n((?:Logged by:[^\n]+\n)?)([\s\S]*?)(?=\n─|$)/g;
+      let match;
+      while ((match = entryPattern.exec(rawText)) !== null) {
+        const [, type, entryDate, byLine, notes] = match;
+        const loggedBy = byLine ? byLine.replace('Logged by:', '').trim() : '';
+        const notesTrimmed = notes.trim();
+        if (!notesTrimmed || notesTrimmed.startsWith('📋')) continue;
+        const syntheticId = `mon-${item.id}-${entryDate}-${type.replace(/\s/g,'')}`;
+        if (!savedIds.has(syntheticId)) {
+          logs.push({ id:syntheticId, accountId:item.id, accountName:item.name,
+            date:entryDate, type, notes:notesTrimmed, loggedBy, fromMonday:true });
+          savedIds.add(syntheticId);
+          added++;
+        }
+      }
+    });
+
+    if (added > 0) {
+      logs.sort((a,b) => new Date(b.date) - new Date(a.date));
     }
-    return true;
-  }).sort((a,b) => {
-    const ra = TIERS.find(t => t.name === tierMap[a.id]);
-    const rb = TIERS.find(t => t.name === tierMap[b.id]);
-    const rna = ra ? ra.rank : 99, rnb = rb ? rb.rank : 99;
-    if (rna !== rnb) return rna - rnb;
-    const ua = urgencyInfo(a), ub = urgencyInfo(b);
-    return (ub ? ub.pct : 0) - (ua ? ua.pct : 0);
+    const now = new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+    if (syncDone) syncDone.textContent = `Live · synced ${now}`;
+  } catch(e) {
+    if (syncDone) syncDone.textContent = 'Monday.com · sync error';
+  } finally {
+    if (syncBanner) syncBanner.style.display = 'none';
+    if (syncDone) syncDone.style.display = 'block';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  document.getElementById('modal').addEventListener('click', e => {
+    if (e.target === document.getElementById('modal')) closeModal();
   });
-}
 
-function getClassified() { return ACCOUNTS.filter(a => tierMap[a.id]); }
-
-function updateStats() {
-  const classified = getClassified();
-  const overdue = classified.filter(a => { const u = urgencyInfo(a); return u && u.overdue; }).length;
-  const unassigned = ACCOUNTS.length - classified.length;
-  document.getElementById("stat-total").textContent = ACCOUNTS.length;
-  document.getElementById("stat-classified").textContent = classified.length;
-  const oel = document.getElementById("stat-overdue");
-  oel.textContent = overdue;
-  oel.className = "sv " + (overdue > 0 ? "red" : "teal");
-  document.getElementById("stat-interactions").textContent = logs.length;
-  const uel = document.getElementById("stat-unassigned");
-  uel.textContent = unassigned;
-  uel.className = "sv " + (unassigned > 0 ? "red" : "teal");
-}
-
-function showView(name) {
-  currentView = name;
-  document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
-  document.getElementById("view-" + name).classList.add("active");
-  document.querySelectorAll(".nb").forEach(b => b.classList.remove("on"));
-  document.querySelectorAll(".nb").forEach(b => {
-    if (b.getAttribute("onclick") && b.getAttribute("onclick").includes(name)) b.classList.add("on");
-  });
-  renderView(name);
-}
-
-function renderView(name) {
-  if (name === "dashboard") renderDashboard();
-  else if (name === "queue") renderQueue();
-  else if (name === "setup") renderSetup();
-  else if (name === "history") renderHistory();
-  updateStats();
-}
-
-function renderDashboard() {
-  const el = document.getElementById("view-dashboard");
-  const classified = getClassified();
-  const sorted = getSorted();
-  const allOD = classified.filter(a => { const u = urgencyInfo(a); return u && u.overdue; });
-
-  if (classified.length === 0) {
-    el.innerHTML = '<div class="onboard">' +
-      '<div class="onboard-title">Welcome — Start in Setup</div>' +
-      '<div class="onboard-body">All 85 accounts are loaded. Go to <strong>Setup</strong> and assign each account to a tier (Political, Revenue, Load, Strategic, or Community). Once classified, they appear here ranked by priority and contact urgency.</div>' +
-      '<button class="onboard-btn" onclick="showView(\'setup\')">Go to Setup →</button>' +
-      '</div>';
-    return;
+  // Show correct status based on context
+  const syncDone = document.getElementById('sync-done');
+  if (IS_LOCAL && syncDone) {
+    syncDone.textContent = '⚠ Host on Netlify for live sync';
+    syncDone.style.color = 'rgba(255,200,50,.7)';
   }
 
-  let html = "";
+  document.getElementById('view-revenue').innerHTML =
+    `<div style="text-align:center;padding:40px;color:var(--mut);font-family:'Josefin Sans',sans-serif;font-size:12px;letter-spacing:.08em">
+      <div style="font-size:22px;margin-bottom:8px">${IS_LOCAL ? '📂' : '⟳'}</div>
+      ${IS_LOCAL ? 'LOADING…' : 'SYNCING WITH MONDAY.COM…'}</div>`;
+  document.getElementById('view-revenue').classList.add('active');
 
-  if (allOD.length > 0 && activeTier === "all" && !search) {
-    html += '<div class="abanner">⚠ <strong>' + allOD.length + ' account' + (allOD.length > 1 ? "s" : "") + '</strong> past contact cadence — see Queue tab</div>';
-  }
+  if (!IS_LOCAL) await syncFromMonday();
+  showView('revenue');
+});
 
-  html += '<div class="filters">';
-  const allStyle = activeTier === "all" ? ' style="border-color:#017381;color:#017381;background:rgba(1,115,129,0.07);font-weight:700"' : '';
-  html += '<button class="fb"' + allStyle + ' onclick="setActiveTier(\'all\')">All (' + classified.length + ')</button>';
-  TIERS.forEach(t => {
-    const cnt = ACCOUNTS.filter(a => tierMap[a.id] === t.name).length;
-    const act = activeTier === t.name;
-    const st = act ? ' style="border-color:' + t.color + ';color:' + t.color + ';background:' + t.dim + ';font-weight:700"' : '';
-    html += '<button class="fb"' + st + ' onclick="setActiveTier(\'' + t.name + '\')">' +
-      '<span class="dot" style="background:' + t.color + '"></span>' + t.short + ' (' + cnt + ')</button>';
-  });
-  html += '<input class="srch" placeholder="Search…" value="' + (search||"") + '" oninput="setSearch(this.value)">';
-  html += '</div>';
-
-  if (sorted.length === 0) {
-    html += '<div class="empty"><div class="et">' + (search ? "No matches" : "No accounts in this tier") + '</div></div>';
-  } else {
-    html += '<div class="grid">';
-    sorted.forEach(acct => {
-      const tier = TIERS.find(t => t.name === tierMap[acct.id]);
-      const ui = urgencyInfo(acct);
-      const isExp = expanded === acct.id;
-      const pct = ui ? ui.pct : 0;
-      const bar = ui && ui.overdue ? "#C0392B" : (tier ? tier.color : "#017381");
-      const alogs = getAccountLogs(acct.id);
-      const borderStyle = isExp ? 'border-color:' + (tier ? tier.color : "#017381") + ';box-shadow:0 3px 12px rgba(0,58,93,0.12)' : '';
-
-      html += '<div class="card" style="' + borderStyle + '" onclick="toggleExpand(\'' + acct.id + '\')">';
-      html += '<div class="ch"><div class="cm">';
-      html += '<div class="tbadge" style="background:' + (tier ? tier.dim : "rgba(0,58,93,0.06)") + ';color:' + (tier ? tier.color : "#003A5D") + ';border-color:' + (tier ? tier.color : "#003A5D") + '28">T' + (tier ? tier.rank : "?") + ' · ' + (tier ? tier.short : "—") + '</div>';
-      html += '<div class="cname">' + esc(acct.name) + '</div>';
-      if (acct.contactTitle) html += '<div class="ctit">' + esc(acct.contactTitle) + '</div>';
-      if (acct.city) html += '<div class="ccity">' + esc(acct.city) + '</div>';
-      html += '</div>';
-      if (ui) {
-        html += '<div class="uw">' + ring(pct, ui.overdue, tier ? tier.color : "#017381") +
-          '<div class="ul' + (ui.overdue ? " ov" : "") + '">' + ui.label + '</div></div>';
-      }
-      html += '</div>';
-      html += '<div class="pbar"><div class="pf" style="width:' + pct + '%;background:' + bar + '"></div></div>';
-
-      if (isExp) {
-        html += '<div class="cbody" onclick="event.stopPropagation()">';
-        if (acct.phone || acct.email) {
-          html += '<div class="clinks">';
-          if (acct.phone) html += '<a href="tel:' + acct.phone + '" class="clink">📞 ' + esc(acct.phone) + '</a>';
-          if (acct.email) html += '<a href="mailto:' + acct.email + '" class="clink">✉ ' + esc(acct.email) + '</a>';
-          html += '</div>';
-        }
-        if (alogs.length > 0) {
-          html += '<div class="llist"><div class="lsl">Recent Interactions</div>';
-          alogs.slice(0,3).forEach(l => {
-            html += '<div class="lrow"><span class="ld">' + l.date + '</span><span class="lbadge">' + esc(l.type) + '</span><span class="ln2">' + esc(l.notes) + '</span></div>';
-          });
-          html += '</div>';
-        }
-        html += '<button class="logbtn" style="background:' + (tier ? tier.color : "#017381") + '" onclick="openLog(\'' + acct.id + '\')">+ Log Interaction</button>';
-        html += '</div>';
-      }
-      html += '</div>';
-    });
-    html += '</div>';
-  }
-
-  el.innerHTML = html;
+async function manualRefresh() {
+  await syncFromMonday();
+  showView(currentView);
+  renderStats();
 }
-
-function renderQueue() {
-  const el = document.getElementById("view-queue");
-  const classified = getClassified();
-
-  if (classified.length === 0) {
-    el.innerHTML = '<div class="vh"><div class="vt">Contact Queue</div></div>' +
-      '<div class="onboard"><div class="onboard-title">No accounts classified yet</div>' +
-      '<div class="onboard-body">Assign tiers in Setup, then your prioritized contact list appears here.</div>' +
-      '<button class="onboard-btn" onclick="showView(\'setup\')">Go to Setup →</button></div>';
-    return;
-  }
-
-  const allSorted = classified.sort((a,b) => {
-    const ra = TIERS.find(t => t.name === tierMap[a.id]);
-    const rb = TIERS.find(t => t.name === tierMap[b.id]);
-    const rna = ra ? ra.rank : 99, rnb = rb ? rb.rank : 99;
-    if (rna !== rnb) return rna - rnb;
-    const ua = urgencyInfo(a), ub = urgencyInfo(b);
-    return (ub ? ub.pct : 0) - (ua ? ua.pct : 0);
-  });
-
-  let html = '<div class="vh"><div class="vt">Contact Queue</div><div class="vs">Ordered by urgency within tier — work top to bottom</div></div>';
-
-  TIERS.forEach(tier => {
-    const accts = allSorted.filter(a => tierMap[a.id] === tier.name);
-    if (!accts.length) return;
-
-    html += '<div class="qsec">';
-    html += '<div class="qsh"><span class="dot" style="background:' + tier.color + ';width:7px;height:7px"></span>';
-    html += '<span class="qst" style="color:' + tier.color + '">' + tier.name + '</span>';
-    html += '<span class="qcad">· every ' + tier.cadence + ' days</span></div>';
-
-    accts.forEach((acct, i) => {
-      const ui = urgencyInfo(acct);
-      const last = getLastContact(acct.id);
-      html += '<div class="qrow' + (ui && ui.overdue ? " ov" : "") + '">';
-      html += '<div class="qrank">' + (i+1) + '</div>';
-      html += '<div style="flex:1;min-width:0"><div class="qname">' + esc(acct.name) + '</div>';
-      if (acct.contactTitle) html += '<div class="qtit">' + esc(acct.contactTitle) + '</div>';
-      html += '</div>';
-      html += '<div class="qstat"><div class="qurg" style="color:' + (ui && ui.overdue ? "#C0392B" : tier.color) + '">' + (ui ? ui.label : "Never contacted") + '</div>';
-      if (last) html += '<div class="qlast">Last: ' + last + '</div>';
-      html += '</div>';
-      html += '<button class="qlb" style="border-color:' + tier.color + ';color:' + tier.color + '" onclick="openLog(\'' + acct.id + '\')">Log</button>';
-      html += '</div>';
-    });
-    html += '</div>';
-  });
-
-  el.innerHTML = html;
-}
-
-function renderSetup() {
-  const el = document.getElementById("view-setup");
-  const unassigned = ACCOUNTS.length - getClassified().length;
-
-  let html = '<div class="vh"><div class="vt">Account Classification</div><div class="vs">Assign each account to a tier — saves automatically. ';
-  if (unassigned > 0) {
-    html += '<span style="color:#C0392B;font-weight:700">· ' + unassigned + ' unassigned</span>';
-  } else {
-    html += '<span style="color:#0E7C5B;font-weight:700">· All classified ✓</span>';
-  }
-  html += '</div></div>';
-
-  ACCOUNTS.forEach(acct => {
-    const cur = tierMap[acct.id] || "";
-    const tier = TIERS.find(t => t.name === cur);
-    const col = tier ? tier.color : "#6B8A96";
-
-    html += '<div class="srow">';
-    html += '<div style="flex:1;min-width:0"><div class="sname">' + esc(acct.name) + '</div>';
-    if (acct.city) html += '<div class="scity">' + esc(acct.city) + '</div>';
-    html += '</div>';
-    html += '<select class="tsel" style="color:' + col + ';font-weight:' + (tier ? "600" : "400") + '" onchange="assignTier(\'' + acct.id + '\',this.value)">';
-    html += '<option value=""' + (!cur ? " selected" : "") + '>— Unassigned —</option>';
-    TIERS.forEach(t => {
-      html += '<option value="' + t.name + '"' + (cur === t.name ? " selected" : "") + '>' + t.short + ' · ' + t.name + '</option>';
-    });
-    html += '</select></div>';
-  });
-
-  el.innerHTML = html;
-}
-
-function renderHistory() {
-  const el = document.getElementById("view-history");
-  let html = '<div class="vh"><div class="vt">Interaction History</div><div class="vs">' + logs.length + ' interactions logged</div></div>';
-
-  if (logs.length === 0) {
-    html += '<div class="empty"><div class="et">No interactions yet</div><div class="es">Log from Dashboard or Queue</div></div>';
-  } else {
-    logs.forEach(log => {
-      html += '<div class="hrow">';
-      html += '<div class="hm"><div class="hd">' + log.date + '</div><div class="hbadge">' + esc(log.type) + '</div></div>';
-      html += '<div style="flex:1;min-width:0"><div class="ha">' + esc(log.accountName) + '</div><div class="hn">' + esc(log.notes) + '</div></div>';
-      html += '</div>';
-    });
-  }
-
-  el.innerHTML = html;
-}
-
-function esc(s) {
-  if (!s) return "";
-  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-}
-
-function setActiveTier(t) { activeTier = t; renderDashboard(); updateStats(); }
-function setSearch(v) { search = v; renderDashboard(); }
-function toggleExpand(id) { expanded = (expanded === id) ? null : id; renderDashboard(); }
-
-function assignTier(id, val) {
-  if (val) { tierMap[id] = val; } else { delete tierMap[id]; }
-  save();
-  updateStats();
-  if (currentView === "setup") renderSetup();
-}
-
-function openLog(id) {
-  logModal = id;
-  const acct = ACCOUNTS.find(a => a.id === id);
-  document.getElementById("modal-acct-name").textContent = acct ? acct.name : "";
-  document.getElementById("log-date").value = today();
-  document.getElementById("log-notes").value = "";
-  document.getElementById("log-type").value = "Meeting";
-  document.getElementById("modal").style.display = "flex";
-}
-
-function closeModal() {
-  logModal = null;
-  document.getElementById("modal").style.display = "none";
-}
-
-function saveLog() {
-  const notes = document.getElementById("log-notes").value.trim();
-  if (!logModal || !notes) return;
-  const acct = ACCOUNTS.find(a => a.id === logModal);
-  logs.unshift({
-    id: Date.now().toString(),
-    accountId: logModal,
-    accountName: acct ? acct.name : "",
-    date: document.getElementById("log-date").value,
-    type: document.getElementById("log-type").value,
-    notes: notes
-  });
-  save();
-  closeModal();
-  updateStats();
-  if (currentView === "dashboard") renderDashboard();
-  else if (currentView === "queue") renderQueue();
-  else if (currentView === "history") renderHistory();
-}
-
-// INIT
-document.getElementById("log-date").value = today();
-renderDashboard();
-updateStats();
 </script>
 </body>
-</html>
+</html> 
